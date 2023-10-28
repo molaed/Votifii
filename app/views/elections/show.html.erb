@@ -1,0 +1,15 @@
+<h1><%= @election.title %></h1>
+
+<p><%= @election.description %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_election_path(@election) %></li>
+  <li><%= link_to "Destroy", election_path(@election), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<%= render "showCandidates", election: @election %>
+
+

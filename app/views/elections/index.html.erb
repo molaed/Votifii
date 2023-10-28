@@ -1,0 +1,11 @@
+<h1>Home Page</h1>
+
+<ul>
+  <% @elections.each do |election| %>
+    <li>
+      <%= link_to election.title, election %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Election", new_election_path %>
