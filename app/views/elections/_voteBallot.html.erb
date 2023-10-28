@@ -1,0 +1,5 @@
+<select name = "id">
+    <%= @candidates.each do |candidate| %>
+      <option value="<%= candidate.id %>"><%= candidate.name %></option>
+    <% end %>
+</select>

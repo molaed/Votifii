@@ -3,7 +3,7 @@ class CreateCandidates < ActiveRecord::Migration[7.0]
     create_table :candidates do |t|
       t.string :name
       t.text :description
-      t.integer :voteCount
+      t.integer :voteCount, default: 0
       t.references :election, null: false, foreign_key: true
 
       t.timestamps

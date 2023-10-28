@@ -5,6 +5,8 @@ class ElectionsController < ApplicationController
 
   def show
     @election = Election.find(params[:id])
+    # @names = Candidate.all.select(:name).map(&:name)
+    @candidates = @election.candidates
   end
 
   def new

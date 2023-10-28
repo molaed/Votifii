@@ -2,7 +2,13 @@
 <% @election.candidates.each do |candidate| %>
   <p>
     <strong> Candidate: </strong>
-    <%= candidate.name %>
+    <%= candidate.name %> <br>
+
+    <strong> Description: </strong>
+    <%= candidate.description%> <br>
+
+    <strong> Votes: </strong>
+    <%= candidate.voteCount %> 
   </p>
   <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
                   turbo_method: :delete,
@@ -11,17 +17,3 @@
   </p>
 <% end %>
 
-<p> Add Candidate </p>
-<%= form_with model: [ @election, @election.candidates.build ] do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
