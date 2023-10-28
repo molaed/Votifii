@@ -4,6 +4,11 @@
     <strong> Candidate: </strong>
     <%= candidate.name %>
   </p>
+  <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
 <% end %>
 
 <p> Add Candidate </p>
