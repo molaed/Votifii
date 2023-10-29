@@ -8,7 +8,11 @@
     <%= candidate.description%> <br>
 
     <strong> Votes: </strong>
-    <%= candidate.voteCount %> 
+    <%= candidate.voteCount %> <br>
+
+    <strong> Id: </strong>
+    <%= candidate.id %> <br>
+    
   </p>
   <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
                   turbo_method: :delete,

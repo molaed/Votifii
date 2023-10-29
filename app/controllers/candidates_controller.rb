@@ -10,6 +10,10 @@ class CandidatesController < ApplicationController
         @candidate.destroy
         redirect_to election_path(@election), status: :see_other
     end
+    def checkInput
+        @candidate = Election.find(params[:commit])
+        @candidate.description = "hello "
+    end
 
 private
     def candidate_params
