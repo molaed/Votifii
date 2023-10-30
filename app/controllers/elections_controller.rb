@@ -1,4 +1,5 @@
 class ElectionsController < ApplicationController
+
   def index
     @elections = Election.all
   end
@@ -53,10 +54,12 @@ class ElectionsController < ApplicationController
     else
       @election.update(winner_id: nil)
     end
-
     # puts "winner is: #{@election.winner_id}"
+    @election.archive_election
     redirect_to election_path(@election)
   end
+
+  
 
   private
     def election_params
