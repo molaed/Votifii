@@ -32,5 +32,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_035443) do
     t.integer "winner_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.bigint "candidate_id", null: false
+    t.text "body"
+    t.bigint "election_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+    t.index ["candidate_id"], name: "index_posts_on_candidate_id"
+    t.index ["election_id"], name: "index_posts_on_election_id"
+  end
+
   add_foreign_key "candidates", "elections"
+  add_foreign_key "posts", "candidates"
+  add_foreign_key "posts", "elections"
 end

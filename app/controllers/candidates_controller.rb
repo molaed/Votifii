@@ -3,7 +3,7 @@ class CandidatesController < ApplicationController
     #Also, these find ids.
     before_action :find_election
     #Add function at the end here
-    before_action :find_candidate, only: [:show, :edit, :update, :destroy, :increment_votes]
+    before_action :find_candidate, only: [:show, :edit, :update, :destroy, :increment_votes, :add_votes]
 
     def create
         @election = Election.find(params[:election_id])
@@ -22,14 +22,11 @@ class CandidatesController < ApplicationController
         @candidate.description = "hello "
     end
 
-    def increment_votes #Increments 
-        #puts outputs to console, useful. Also, typing rails console, then Candidate.all lists all candidates and variables
-        #puts "Election ID: #{params[:election_id]}"
-        #puts "Candidate ID: #{params[:id]}"
-        @candidate = Candidate.find(params[:id])
-        @candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
-        @candidate.save
-        redirect_to election_path(@candidate.election)
+    def increment_votes
+        candidate = Candidate.find(params[:candidate_id]) #Takes candidate_id from form
+        candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
+        candidate.save 
+        redirect_to election_path(candidate.election)
       end
 
 private
@@ -39,10 +36,14 @@ private
 
     #I have no idea why, but without these, the candidate list keeps switching order
     def find_election
+        puts "A" 
+        puts params
         @election = Election.find(params[:election_id])
     end
 
     def find_candidate
-        @candidate = @election.candidates.find(params[:id])
+        puts "B" 
+        puts params
+        @candidate = @election.candidates.find(params[:candidate_id])
     end
 end

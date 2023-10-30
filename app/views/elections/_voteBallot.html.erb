@@ -1,16 +1,18 @@
-<ul>
-  <% @election.candidates.each do |candidate| %>
-    <li>
-      <p><%= candidate.name %></p>
-      <p>Votes: <%= candidate.voteCount %></p>
-      
-      <!--form_with creates the button. 
-          url:increment_votes_election_candidate_path(election_id, id) is 
-          <function_name>_<nested 'do' from routes.rb>_path(election_id,id)
-      -->
-      <%= form_with(model: candidate, url: increment_votes_election_candidate_path(@election, candidate), method: :patch) do |form| %>
-        <%= form.submit 'Increment Votes' %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<!--Changed to a select element.
+  How this works:
+  form_with creates a form which will call increment_votes_election_candidate_path. 
+  url:increment_votes_election_candidate_path(election) is 
+  <function_name>_<nested 'do' from routes.rb>_path(election_id)
+
+  This will pass params to said function. 
+  Included in this is params[:candidate_id], 
+  which directly relates to the select element
+-->
+<%= form_with(model: [@election, Candidate.new], url: increment_votes_election_candidate_path(@election), method: :patch) do |form| %>
+  <select name="candidate_id">
+    <% @election.candidates.each do |candidate| %>
+      <option value="<%= candidate.id %>"><%= candidate.name %></option>
+    <% end %>
+  </select>
+  <%= form.submit 'Increment Votes' %>
+<% end %>
