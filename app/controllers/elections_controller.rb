@@ -48,7 +48,13 @@ class ElectionsController < ApplicationController
     @election = Election.find(params[:id])
     @candidates = @election.candidates
     @winner = @candidates.max_by(&:voteCount)
-    puts "Winner #{@winner.name}"
+    if @winner
+      @election.update(winner_id: @winner.id)
+    else
+      @election.update(winner_id: nil)
+    end
+    
+    puts "winner is: #{@election.winner_id}"
     redirect_to election_path(@election)
   end
 

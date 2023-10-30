@@ -1,5 +1,7 @@
 <p> Current Candidates </p>
+
 <% @election.candidates.each do |candidate| %>
+
   <p>
     <strong> Candidate: </strong>
     <%= candidate.name %> <br>
@@ -20,7 +22,7 @@
                 } %>
   </p>
 
-  <%= link_to "End Election", end_election_path(@election)%>  
-
 <% end %>
+
+<%= link_to "End Election", end_election_path(@election)%>  
 
