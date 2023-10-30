@@ -1,9 +1,12 @@
 <h1><%= @election.title %></h1>
 
 <% if @election.winner_id.present? %>
-  <h2>Winner:</h2>
+  <hr/>
+  <h4><strong>Winner:</strong></h4>
   <% @winner=Candidate.find(@election.winner_id) %>
-  <p>Name: <%= @winner.name %>
+  <p><em><%= @winner.name %></em> with <em><%= @winner.voteCount %> votes!</em></p>
+  <p><strong>Description:</strong> <%= @winner.description %>
+  <hr/>
 <% else %>
   <h3> No Winner </h3>
 <% end %>
