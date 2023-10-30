@@ -44,6 +44,11 @@ class ElectionsController < ApplicationController
     redirect_to root_path, status: :see_other
   end
 
+  def end
+    @election = Election.find(params[:id])
+    redirect_to election_path(@election)
+  end
+
   private
     def election_params
       params.require(:election).permit(:title, :description)
