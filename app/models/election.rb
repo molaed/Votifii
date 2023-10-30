@@ -6,8 +6,9 @@ class Election < ApplicationRecord
   def archive_election
     if self.status == 'public'
       update(status: 'archived')
+      puts "ARCHIVED THIS ELECTION"
     end
-    puts "ARCHIVED THIS ELECTION"
+    
   end
 
   validates :title, presence: true

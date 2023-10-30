@@ -9,6 +9,7 @@
           <function_name>_<nested 'do' from routes.rb>_path(election_id,id)
       -->
       <%= form_with(model: candidate, url: increment_votes_election_candidate_path(@election, candidate), method: :patch) do |form| %>
+        
         <%= form.submit 'Increment Votes' %>
       <% end %>
     </li>

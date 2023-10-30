@@ -1,7 +1,13 @@
 <p> Current Candidates </p>
 
-<% @election.candidates.each do |candidate| %>
+<% if @election.status == 'public' %>
+    <h3>This election is still public!</h3>
+  <% else %>
+    <h3>This election is now archived</h3>
+  <% end %>
 
+<% @election.candidates.each do |candidate| %>
+  
   <p>
     <strong> Candidate: </strong>
     <%= candidate.name %> <br>
@@ -16,12 +22,6 @@
     <%= candidate.id %> <br>
     
   </p>
-  <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-  </p>
-
 <% end %>
 
 <%= link_to "End Election", end_election_path(@election)%>  
