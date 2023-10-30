@@ -1,5 +1,12 @@
 <h1><%= @election.title %></h1>
 
+<% if @winner %>
+  <h2>Winner:</h2>
+  <p>name: <%= @winner.name %></p>
+<% else %>
+  <h3> No Winner </h3>
+<% end %>
+
 <p><%= @election.description %></p>
 
 <ul>
