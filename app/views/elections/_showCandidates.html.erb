@@ -2,9 +2,9 @@
 
 <% if @election.status == 'public' %>
     <h3>This election is still public!</h3>
-  <% else %>
+<% else %>
     <h3>This election is now archived</h3>
-  <% end %>
+<% end %>
 
 <% @election.candidates.each do |candidate| %>
   
@@ -24,5 +24,7 @@
   </p>
 <% end %>
 
-<%= link_to "End Election", end_election_path(@election)%>  
+<% if @election.status == 'public' %>
+  <%= link_to "End Election", end_election_path(@election)%>  
+<% end %>
 
