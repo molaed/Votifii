@@ -16,10 +16,12 @@ class ElectionsController < ApplicationController
 
   def create
     @election = Election.new(election_params)
-
+    puts "#{@election.title}, #{@election.description}, #{@election.winner_id == nil}, #{@election.status == nil}"
     if @election.save
+      puts "election created!"
       redirect_to @election
     else
+      puts "election NOT created!"
       render :new, status: :unprocessable_entity
     end
   end
@@ -33,6 +35,7 @@ class ElectionsController < ApplicationController
 
     if @election.update(election_params)
       redirect_to @election
+      
     else
       render :edit, status: :unprocessable_entity
     end

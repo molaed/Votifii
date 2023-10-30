@@ -3,6 +3,9 @@ class Election < ApplicationRecord
   has_many :candidates, dependent: :destroy
   VALID_STATES = ['public', 'archived']
 
+  attribute :winner_id, :integer, default: nil
+  attribute :status, :string, default: 'public'
+
   def archive_election
     if self.status == 'public'
       update(status: 'archived')
