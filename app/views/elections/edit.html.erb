@@ -1,7 +1,13 @@
-<h1>Edit Election</h1>
 
-<%= render "form", election: @election %>
+<body id="background">
+    <div id="main">
 
-<%= render "candidates/showCandidates", election: @election %>
+		<h1>Edit Election</h1>
 
-<%= render "candidates/addCandidates", election: @election %>
+		<%= render "form", election: @election %>
+
+		<%= render "candidates/showCandidates", election: @election %>
+
+		<%= render "candidates/addCandidates", election: @election %>
+	</div>
+</body>

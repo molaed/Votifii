@@ -1,58 +1,57 @@
-<h1><%= @election.title %></h1>
 
-<p><%= @election.candidateCount %></p>
+<body id="background">
+    <div id="main">
 
-<% if @election.winner_id.present? %>
-  <hr/>
-  <h4><strong>Winner:</strong></h4>
-  <% @winner=Candidate.find(@election.winner_id) %>
-  <p><em><%= @winner.name %></em> with <em><%= @winner.voteCount %> votes!</em></p>
-  <p><strong>Description:</strong> <%= @winner.description %>
-  <hr/>
-<% else %>
-  <h3> No Winner </h3>
-<% end %>
 
-<p><%= @election.description %></p>
+  <h1><%= @election.title %></h1>
+  <% if @election.winner_id.present? %>
+    <hr/>
+    <h4><strong>Winner:</strong></h4>
+    <% @winner=Candidate.find(@election.winner_id) %>
+    <p><em><%= @winner.name %></em> with <em><%= @winner.voteCount %> votes!</em></p>
+    <p><strong>Description:</strong> <%= @winner.description %>
+    <hr/>
+  <% else %>
+    <h3> No Winner </h3>
+  <% end %>
 
-<ul>
-  <li><%= link_to "Edit", edit_election_path(@election) %></li>
-  <li><%= link_to "Destroy", election_path(@election), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+  <p><%= @election.description %></p>
 
-<p> Current Candidates </p>
-
-<% if @election.candidateCount == 0 %>
-    <div>
-        You currently have no candidates added. 
-        <%= link_to "Add candidates here", edit_election_path(@election) %>
-   </div>
-<% end %>
-
-<% @election.candidates.each do |candidate| %>
-  <p>
-    <strong> Candidate: </strong>
-    <%= candidate.name %> <br>
-
-    <strong> Description: </strong>
-    <%= candidate.description%> <br>
-
-    <strong> Votes: </strong>
-    <%= candidate.voteCount %> <br>
-    
+  <p>Options: <% if @election.status == "public" %> <%= link_to "End", end_election_path(@election) %> | <%= link_to "Edit", edit_election_path(@election) %> | <% end %> <%= link_to "Delete", election_path(@election), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    } %>
   </p>
-  </p>
-<% end %>
+  <h4> Current Candidates </h4>
+  <p>Current Count: <%= @election.candidates.count() %></p>
+  <% if @election.candidates.count() == 0 %>
+      <div>
+          You currently have no candidates added. 
+          <%= link_to "Add candidates here", edit_election_path(@election) %>
+     </div>
+  <% end %>
 
-<% if @election.candidateCount != 0 %>
-    <div>
-      <%= render 'candidates/voteBallot', election: @election %>
-   </div>
-<% end %>
+  <% @election.candidates.order(:name).each do |candidate| %>
+    <p>
+      <strong> Candidate: </strong>
+      <%= candidate.name %> <br>
 
+      <strong> Description: </strong>
+      <%= candidate.description%> <br>
 
+      <strong> Votes: </strong>
+      <%= candidate.voteCount %> <br>
+      
+    </p>
+    </p>
+  <% end %>
+
+  <% if @election.candidates.count() != 0 %>
+      <div>
+        <%= render 'candidates/voteBallot', election: @election %>
+     </div>
+  <% end %>
+  </div>
+</body>
 
 

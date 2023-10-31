@@ -1,0 +1,29 @@
+#main {
+	border: 1px solid white;
+	margin: 1% 1% 1% 1%;
+	padding: 1% 1% 1% 1%;
+	color: white;
+}
+#background {
+	background-color: black;
+}
+/* unvisited link */
+a:link {
+  color: #27d0e6;
+}
+
+a:visited {
+  color: #27d0e6;
+}
+
+a:hover {
+  color: #a6f5ff;
+}
+
+a:active {
+  color: #8cf2ff;
+}
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+}

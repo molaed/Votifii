@@ -1,12 +1,12 @@
 <p> Current Candidates </p>
 
-<% if @election.candidateCount == 0 %>
+<% if @election.candidates.count() == 0 %>
     <div>
         <p> You currently have no candidates added. </p>
    </div>
 <% end %>
 
-<% @election.candidates.each do |candidate| %>
+<% @election.candidates.order(:name).each do |candidate| %>
   <p>
     <strong> Candidate: </strong>
     <%= candidate.name %> <br>
