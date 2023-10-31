@@ -1,5 +1,7 @@
 <h1><%= @election.title %></h1>
 
+<p><%= @election.candidateCount %></p>
+
 <% if @election.winner_id.present? %>
   <hr/>
   <h4><strong>Winner:</strong></h4>
@@ -40,8 +42,6 @@
 
     <strong> Votes: </strong>
     <%= candidate.voteCount %> <br>
-
-    <%= render 'candidates/voteBallot', election: @election %>
     
   </p>
   <%#= link_to "Destroy Candidate", [candidate.election, candidate], data: {
@@ -50,4 +50,6 @@
                 } %>
   </p>
 <% end %>
+
+<%= render 'candidates/voteBallot', election: @election %>
 
