@@ -1,0 +1,12 @@
+<ul>
+    <% if @election.status == 'public' %>
+      <%= form_with(model: [@election, Candidate.new], url: increment_votes_election_candidate_path(@election), method: :patch) do |form| %>
+        <select name="candidate_id">
+          <% @election.candidates.each do |candidate| %>
+            <option value="<%= candidate.id %>"><%= candidate.name %></option>
+          <% end %>
+        </select>
+        <%= form.submit 'Increment Votes' %>
+      <% end %>
+    <% end %>
+</ul>

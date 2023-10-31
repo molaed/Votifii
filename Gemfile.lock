@@ -133,6 +133,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
+      racc (~> 1.4)
     pg (1.5.4)
     pg (1.5.4-x64-mingw-ucrt)
     psych (5.1.1.1)
@@ -221,6 +223,7 @@ PLATFORMS
   arm64-darwin-22
   x64-mingw-ucrt
   x86_64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
