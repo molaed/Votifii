@@ -1,5 +1,5 @@
 class Candidate < ApplicationRecord
-  belongs_to :election
+  belongs_to :election, optional: true
   after_initialize :default_values
 
 private

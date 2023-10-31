@@ -1,4 +1,11 @@
 <p> Current Candidates </p>
+
+<% if @election.candidateCount == 0 %>
+    <div>
+        <p> You currently have no candidates added. </p>
+   </div>
+<% end %>
+
 <% @election.candidates.each do |candidate| %>
   <p>
     <strong> Candidate: </strong>
@@ -9,12 +16,9 @@
 
     <strong> Votes: </strong>
     <%= candidate.voteCount %> <br>
-
-    <strong> Id: </strong>
-    <%= candidate.id %> <br>
     
   </p>
-  <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
+  <%#= link_to "Destroy Candidate", [candidate.election, candidate], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>

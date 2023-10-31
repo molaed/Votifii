@@ -1,5 +1,7 @@
 <h1><%= @election.title %></h1>
 
+<p> <%= @election.candidateCount %> candidates. </p>
+
 <p><%= @election.description %></p>
 
 <ul>
@@ -10,10 +12,35 @@
                   } %></li>
 </ul>
 
-<%= render "showCandidates", election: @election %>
+<p> Current Candidates </p>
 
-<%= render "voteBallot", election: @election %>
+<% if @election.candidateCount == 0 %>
+    <div>
+        You currently have no candidates added. 
+        <%= link_to "Add candidates here", edit_election_path(@election) %>
+   </div>
+<% end %>
 
-<%= render "addCandidates", election: @election %>
+<% @election.candidates.each do |candidate| %>
+  <p>
+    <strong> Candidate: </strong>
+    <%= candidate.name %> <br>
 
+    <strong> Description: </strong>
+    <%= candidate.description%> <br>
+
+    <strong> Votes: </strong>
+    <%= candidate.voteCount %> <br>
+
+    <%= form_with(model: candidate, url: increment_votes_election_candidate_path(@election, candidate), method: :patch) do |form| %>
+        <%= form.submit 'Increment Votes' %>
+    <% end %>
+    
+  </p>
+  <%#= link_to "Destroy Candidate", [candidate.election, candidate], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  </p>
+<% end %>
 
