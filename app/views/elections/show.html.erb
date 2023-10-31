@@ -44,12 +44,15 @@
     <%= candidate.voteCount %> <br>
     
   </p>
-  <%#= link_to "Destroy Candidate", [candidate.election, candidate], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
   </p>
 <% end %>
 
-<%= render 'candidates/voteBallot', election: @election %>
+<% if @election.candidateCount != 0 %>
+    <div>
+      <%= render 'candidates/voteBallot', election: @election %>
+   </div>
+<% end %>
+
+
+
 
