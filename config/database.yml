@@ -1,13 +1,9 @@
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-#
-# Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
-# for a full overview on how database connection configuration can be specified.
-#
-production:
-  <<: *default
-  url: <%= ENV['postgres://rails_db_38s4_user:73AIvU80NRs5euOeQ9KzY9IiOnl7Fk2w@dpg-cl0ter8p2gis73a1s4q0-a/rails_db_38s4'] %>
+  adapter: postgresql # Specify the correct adapter, which should be 'postgresql' for PostgreSQL databases
+  encoding: utf8
   database: rails_db_38s4
   username: rails_db_38s4_user
   password: <%= ENV['73AIvU80NRs5euOeQ9KzY9IiOnl7Fk2w'] %>
+  pool: 5 # You can adjust the pool size as needed
