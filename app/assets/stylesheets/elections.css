@@ -1,12 +1,26 @@
 #main {
-	border: 1px solid white;
+
 	margin: 1% 1% 1% 1%;
 	padding: 1% 1% 1% 1%;
 	color: white;
 }
-#background {
-	background-color: black;
+body {
+  --dot-bg: black;
+  --dot-color: white;
+  --dot-size: 1px;
+  --dot-space: 22px;
+	background:
+		linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		var(--dot-color);
 }
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
 /* unvisited link */
 a:link {
   color: #27d0e6;
