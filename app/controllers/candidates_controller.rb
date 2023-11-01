@@ -11,7 +11,7 @@ class CandidatesController < ApplicationController
        # @election.update_attribute(:candidateCount, @election.candidateCount - 1)
         @candidate = @election.candidates.find(params[:id])
         @candidate.destroy
-        redirect_to election_path(@election), status: :see_other
+        redirect_to edit_election_path(@election), status: :see_other
     end
 
     def checkInput
