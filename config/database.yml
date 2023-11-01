@@ -5,5 +5,4 @@ production:
   encoding: utf8
   database: rails_db_38s4
   username: rails_db_38s4_user
-  password: <%= ENV['73AIvU80NRs5euOeQ9KzY9IiOnl7Fk2w'] %>
   pool: 5 # You can adjust the pool size as needed
