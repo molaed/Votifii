@@ -1,5 +1,7 @@
 # README
 
+To access the Deployed version of this project, access this website : https://rails-qt42.onrender.com/
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
