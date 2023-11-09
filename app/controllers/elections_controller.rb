@@ -69,3 +69,5 @@ class ElectionsController < ApplicationController
       params.require(:election).permit(:title, :description)
     end
 end
+
+# test merge 
