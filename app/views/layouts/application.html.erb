@@ -31,6 +31,10 @@
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     <% end %>
   </ul>
-    <%= yield %>
+
+  <%= yield %>
+  
+  <%= image_tag @image %>
+
   </body>
 </html>
