@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: votifii_production
   username: votifii
   password: <%= ENV["VOTIFII_DATABASE_PASSWORD"] %>
