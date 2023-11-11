@@ -72,6 +72,6 @@ group :test do
   gem "selenium-webdriver"
 
 end
-
+gem "ffi"
 # Authentication
 gem 'devise'

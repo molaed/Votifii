@@ -17,10 +17,7 @@
   <p class="alert"><%= alert %></p>
 
   <body>
-
-  <button>
-      <%= link_to "Home Page", root_path %>
-  </button>
+  <%= yield %>
 
   <ul>
     <% if user_signed_in? %>
@@ -31,10 +28,8 @@
       <li><%= link_to "Sign Up", new_user_registration_path %></li>
     <% end %>
   </ul>
-
-  <%= yield %>
   
-  <%= image_tag @image %>
+  <!-- < %= image_tag @image %>, breaks things (See application_controller.rb)-->
 
   </body>
 </html>

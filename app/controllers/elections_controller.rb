@@ -17,13 +17,13 @@ class ElectionsController < ApplicationController
   end
 
   def create
-    @election = Election.new(election_params)
-    puts "#{@election.title}, #{@election.description}, #{@election.winner_id == nil}, #{@election.status == nil}"
+    @election = current_user.elections.new(election_params)
+    #puts "#{@election.title}, #{@election.description}, #{@election.winner_id == nil}, #{@election.status == nil}"
     if @election.save
-      puts "election created!"
+     # puts "election created!"
       redirect_to @election
     else
-      puts "election NOT created!"
+      #puts "election NOT created!"
       render :new, status: :unprocessable_entity
     end
   end
@@ -34,34 +34,40 @@ class ElectionsController < ApplicationController
 
   def update
     @election = Election.find(params[:id])
-
-    if @election.update(election_params)
-      redirect_to @election
-      
-    else
-      render :edit, status: :unprocessable_entity
+    if @election.user == current_user #Make sure they have permission
+      if @election.update(election_params)
+        redirect_to @election
+        
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
   def destroy
     @election = Election.find(params[:id])
-    @election.destroy
+    if @election.user == current_user #Make sure they have permission
+      @election.destroy
 
-    redirect_to root_path, status: :see_other
+      redirect_to root_path, status: :see_other
+    end
   end
 
   def end
     @election = Election.find(params[:id])
-    @candidates = @election.candidates
-    @winner = @candidates.max_by(&:voteCount)
-    if @winner
-      @election.update(winner_id: @winner.id)
-    else
-      @election.update(winner_id: nil)
+    if @election.user == current_user #Make sure they have permission
+      
+      @candidates = @election.candidates
+      @winner = @candidates.max_by(&:voteCount)
+      if @winner
+        @election.update(winner_id: @winner.id)
+      else
+        @election.update(winner_id: nil)
+      end
+      # puts "winner is: #{@election.winner_id}"
+      @election.archive_election
+      redirect_to election_path(@election)
     end
-    # puts "winner is: #{@election.winner_id}"
-    @election.archive_election
-    redirect_to election_path(@election)
   end
 
   
