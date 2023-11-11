@@ -1,5 +1,7 @@
 class ElectionsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @elections = Election.all
   end

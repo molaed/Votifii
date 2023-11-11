@@ -1,4 +1,6 @@
 class CandidatesController < ApplicationController
+
+    before_action :authenticate_user!
     
     def create
         @election = Election.find(params[:election_id])
