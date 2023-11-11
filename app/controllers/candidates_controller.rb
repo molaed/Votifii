@@ -1,6 +1,6 @@
 class CandidatesController < ApplicationController
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: :increment_votes
     
     def create
         @election = Election.find(params[:election_id])

@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_053337) do
   create_table "candidates", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "voteCount"
+    t.integer "voteCount", default: 0
     t.bigint "election_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,7 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_053337) do
   create_table "elections", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.integer "candidateCount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "winner_id"
