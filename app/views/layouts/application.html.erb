@@ -17,6 +17,11 @@
   <p class="alert"><%= alert %></p>
 
   <body>
+
+  <button>
+      <%= link_to "Home Page", root_path %>
+  </button>
+
   <ul>
     <% if user_signed_in? %>
       <li><%= link_to "Hi, #{current_user.email}", edit_user_registration_path %></li>
