@@ -11,7 +11,7 @@
     <strong> Candidate: </strong>
     <%= candidate.name %> <br>
 
-    <%= image_tag candidate.profile_image if candidate.profile_image.attached? %>
+    <%= image_tag candidate.profile_image, style: 'max-width: 200px; height: auto;' if candidate.profile_image.attached? %>
 
     <strong> Description: </strong>
     <%= candidate.description%> <br>
