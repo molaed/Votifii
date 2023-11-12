@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_095147) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_044417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_095147) do
     t.integer "winner_id"
     t.string "status"
     t.bigint "user_id", null: false
+    t.integer "voters", default: [], array: true
     t.index ["user_id"], name: "index_elections_on_user_id"
   end
 

@@ -71,7 +71,7 @@ class ElectionsController < ApplicationController
     end
   end
 
-  
+
 
   private
     def election_params

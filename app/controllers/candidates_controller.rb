@@ -25,11 +25,21 @@ class CandidatesController < ApplicationController
         @candidate.description = "hello "
     end
 
-    def increment_votes #Increments 
-        candidate = Candidate.find(params[:candidate_id]) #Takes candidate_id from form
-        candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
-        candidate.save 
-        redirect_to election_path(candidate.election)
+    def increment_votes #Increments
+        @election = Election.find(params[:election_id])
+        if !@election.voters.include?(current_user.id)
+
+            candidate = Candidate.find(params[:candidate_id]) #Takes candidate_id from form
+            candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
+            candidate.save 
+            redirect_to election_path(candidate.election)
+
+            # Add the current user to the voters array
+            @election.voters << current_user.id
+
+            # Save the record to persist the changes
+            @election.save
+        end
       end
 
 private
