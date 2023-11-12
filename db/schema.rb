@@ -62,7 +62,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_053618) do
     t.integer "winner_id"
     t.string "status"
     t.bigint "user_id", null: false
-    t.string "voter_email"
     t.index ["user_id"], name: "index_elections_on_user_id"
   end
 
