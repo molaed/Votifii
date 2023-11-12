@@ -70,7 +70,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.39.2)
@@ -84,11 +84,11 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
-    date (3.3.3)
+    date (3.3.4)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
-    devise (4.9.2)
+    devise (4.9.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -97,6 +97,8 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.12.0)
+    ffi (1.16.3)
+    ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http-accept (1.7.0)
@@ -109,7 +111,7 @@ GEM
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.8.3)
+    irb (1.9.0)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -132,12 +134,12 @@ GEM
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
-    net-imap (0.4.2)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
@@ -159,7 +161,7 @@ GEM
     public_suffix (5.0.3)
     puma (5.6.7)
       nio4r (~> 2.0)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -191,13 +193,13 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
-    rake (13.0.6)
-    rdoc (6.5.0)
+    rake (13.1.0)
+    rdoc (6.6.0)
       psych (>= 4.0.0)
     regexp_parser (2.8.2)
-    reline (0.3.9)
+    reline (0.4.0)
       io-console (~> 0.5)
-    responders (3.1.0)
+    responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rest-client (2.1.0)
@@ -207,7 +209,7 @@ GEM
       netrc (~> 0.8)
     rexml (3.2.6)
     rubyzip (2.3.2)
-    selenium-webdriver (4.14.0)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -220,9 +222,9 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.8)
+    stringio (3.0.9)
     thor (1.3.0)
-    timeout (0.4.0)
+    timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -233,7 +235,8 @@ GEM
       tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8.2)
+    unf_ext (0.0.9)
+    unf_ext (0.0.9-x64-mingw-ucrt)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -260,6 +263,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  ffi
   importmap-rails
   jbuilder
   pg (~> 1.1)
