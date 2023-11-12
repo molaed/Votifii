@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_224551) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_11_11_095147) do
->>>>>>> 65cc1ca1e38dfd50b065ba7630226f7e8636e53f
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,16 +43,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_095147) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "elections_id", null: false
-    t.index ["elections_id"], name: "index_users_on_elections_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "candidates", "elections"
-<<<<<<< HEAD
-  add_foreign_key "users", "elections", column: "elections_id"
-=======
   add_foreign_key "elections", "users"
->>>>>>> 65cc1ca1e38dfd50b065ba7630226f7e8636e53f
 end
