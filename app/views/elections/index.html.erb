@@ -13,7 +13,7 @@
         <!-- Iterate over each user in the collection of users with elections. -->
         <li>
           <!-- For each user, create a list item (li) to display their email address as the host. -->
-          <%= "Host: #{user.email}" %>
+          Host: <%=  link_to user.email, user %>
 
           <ul>
             <!-- Nested unordered list to display the elections associated with the current user. -->
