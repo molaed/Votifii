@@ -1,5 +1,7 @@
 # Welcome to Votifii!
 
+## Check out the project here, live on Render!: <a href="https://rails-qt42.onrender.com/">Votifii</a>
+
 ## What's this all about?
 
 Votifii is an online voting platform. Authorized users are able to:
@@ -11,3 +13,5 @@ Votifii is an online voting platform. Authorized users are able to:
   - A **vote count**
 - Each election allows voters to **vote** for a candidate of their choosing
 - **End** the election by determining who has the most votes and declaring the winner!
+
+
