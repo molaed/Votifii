@@ -12,10 +12,11 @@ class Election < ApplicationRecord
       update(status: 'archived')
       puts "ARCHIVED THIS ELECTION"
     end
-    
   end
 
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :status, inclusion: { in: VALID_STATES }
+
+  
 end
