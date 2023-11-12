@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema[7.0].define(version: 2023_11_12_071250) do
-=======
 ActiveRecord::Schema[7.0].define(version: 2023_11_12_071304) do
->>>>>>> 9cd76650a4ba69773b6982c7e7d9a68f6a07ff08
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,8 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_071304) do
     t.text "speech"
 <<<<<<< HEAD
     t.string "image_link"
-=======
-    t.integer "voters", default: [], array: true
+======
 >>>>>>> 9cd76650a4ba69773b6982c7e7d9a68f6a07ff08
     t.index ["election_id"], name: "index_candidates_on_election_id"
   end
