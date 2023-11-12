@@ -30,7 +30,11 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
+<<<<<<< HEAD
 #workers ENV.fetch("WEB_CONCURRENCY") { 4 }
+=======
+#workers ENV.fetch("WEB_CONCURRENCY") { 4 } Causes an error for windows unless commented out
+>>>>>>> 65cc1ca1e38dfd50b065ba7630226f7e8636e53f
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_11_11_224551) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_11_11_095147) do
+>>>>>>> 65cc1ca1e38dfd50b065ba7630226f7e8636e53f
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_224551) do
     t.datetime "updated_at", null: false
     t.integer "winner_id"
     t.string "status"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_elections_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,5 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_224551) do
   end
 
   add_foreign_key "candidates", "elections"
+<<<<<<< HEAD
   add_foreign_key "users", "elections", column: "elections_id"
+=======
+  add_foreign_key "elections", "users"
+>>>>>>> 65cc1ca1e38dfd50b065ba7630226f7e8636e53f
 end
