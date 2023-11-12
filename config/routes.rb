@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "elections#home"
-
+  resource :user, only: [:show, :edit, :update]
+  resources :users
   resources :elections do
     member do
       get 'end'

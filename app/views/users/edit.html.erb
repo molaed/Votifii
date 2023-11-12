@@ -1,0 +1,26 @@
+<h1>Edit Your Profile</h1>
+
+<%= form_for @user, url: user_path, method: :patch, html: { multipart: true } do |f| %>
+  <%= f.label :name %></br>
+  <%= f.text_field :name %></br>
+
+  <%= f.label :candidate %></br>
+  <%= f.text_field :candidate %></br>
+
+  <%= f.label :currentPosition %></br>
+  <%= f.text_field :currentPosition %></br>
+
+  <%= f.label :experience %></br>
+  <%= f.text_field :experience %></br>
+
+  <%= f.label :education %></br>
+  <%= f.text_field :education %></br>
+
+  <%= f.label :accolades %></br>
+  <%= f.text_field :accolades %></br>
+
+  <%= f.label :connections %></br>
+  <%= f.text_field :connections %></br>
+
+  <%= f.submit 'Update Profile' %>
+<% end %>

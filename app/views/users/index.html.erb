@@ -1,0 +1,10 @@
+<h1>All User Profiles</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <h2><%= user.name %></h2>
+    <p>Candidate: <%= user.candidate %></p>
+    <%= link_to 'View Profile', user_path(user) %>
+    <%= link_to 'Edit Profile', edit_user_path(user) %>
+  </div>
+<% end %>
