@@ -1,7 +1,3 @@
-#code snippet creates a comment form for users to add new comments related to a post.
-#The form includes input fields for the comment body and a submit button to post the comment.
-
-
 <p> Add Candidate </p>
 <%= form_with model: [ @election, @election.candidates.build ] do |form| %>
   <p>

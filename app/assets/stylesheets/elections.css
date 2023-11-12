@@ -88,6 +88,6 @@ a:active {
 .logo-text {
   cursor: default;
   text-decoration: none;
-  color: cyan; /* Change to your preferred text color */
+  color: #406FDB; /* Change to your preferred text color */
   font-size: 1.5rem; /* Adjust the font size as needed */
 }
