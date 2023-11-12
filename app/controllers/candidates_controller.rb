@@ -8,7 +8,6 @@ class CandidatesController < ApplicationController
         if @election.user == current_user #Make sure they have permission
             #@election.update_attribute(:candidateCount, @election.candidateCount + 1)
             @candidate = @election.candidates.create(candidate_params)
-            #@candidate.profile_image = "d"
             redirect_back(fallback_location: root_path)
         end
     end
@@ -32,10 +31,11 @@ class CandidatesController < ApplicationController
         candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
         candidate.save 
         redirect_to election_path(candidate.election)
-      end
+    end
+    
 
 private
     def candidate_params
-        params.require(:candidate).permit(:name, :description, :profile_image, :speech)
+        params.require(:candidate).permit(:name, :description, :image_link, :speech)
     end
 end

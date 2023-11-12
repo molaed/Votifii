@@ -2,13 +2,13 @@ class ApplicationController < ActionController::Base
     require 'rest-client'
     require 'json'
 
-    # before_action :render_pic
+    helper_method :render_pic
 
-    # def render_pic
-    #    response = RestClient.get "https://picsum.photos/seed/picsum/200/"
+    def render_pic
+       response = RestClient.get "https://dog.ceo/api/breeds/image/random"
         
-    #    hash = JSON.parse(response)
+       hash = JSON.parse(response)
 
-    #    @image = hash["url"]
-    # end
+       @link = hash["message"]
+    end
 end

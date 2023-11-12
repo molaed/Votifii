@@ -13,10 +13,13 @@
     <%= form.text_area :speech, rows: 5 %>
   </p>
   <p>
-    <%= form.label :profile_image %>
-    <%= form.file_field :profile_image %>
+    <div style = "visibility:hidden;">
+      <%= form.text_field :image_link, :value =>  render_pic %>
+    </div>
   </p>
+
   <p>
     <%= form.submit %>
   </p>
 <% end %>
+
