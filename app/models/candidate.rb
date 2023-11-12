@@ -4,6 +4,8 @@ class Candidate < ApplicationRecord
 
   has_one_attached :profile_image
 
+  # validates :speech, presence: true
+
 private
   def default_values
     self.voteCount ||= 0
