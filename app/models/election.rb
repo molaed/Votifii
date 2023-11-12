@@ -1,6 +1,7 @@
 class Election < ApplicationRecord
   include Visible
   belongs_to :user #Belongs to User now
+  has_many :comments, dependent: :destroy
   has_many :candidates, dependent: :destroy
   VALID_STATES = ['public', 'archived']
 
