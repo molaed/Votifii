@@ -23,15 +23,15 @@
 
     <strong> Votes: </strong>
     <%= candidate.voteCount %> <br>
-
-    <strong> Id: </strong>
-    <%= candidate.id %> <br>
     
+    <p>---------------------------------------------------</p>
+<% end %>
+
+<% @election.candidates.order(:name).each do |candidate| %>
   </p>
-  <%= link_to "Destroy Candidate", [candidate.election, candidate], data: {
+  <%= link_to "Destroy " + candidate.name, [candidate.election, candidate], data: {
                   turbo_method: :delete,
                   turbo_confirm: "Are you sure?"
                 } %>
   </p>
 <% end %>
-

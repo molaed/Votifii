@@ -4,9 +4,11 @@ class CandidatesController < ApplicationController
     
     def create
         @election = Election.find(params[:election_id])
+
         if @election.user == current_user #Make sure they have permission
             #@election.update_attribute(:candidateCount, @election.candidateCount + 1)
             @candidate = @election.candidates.create(candidate_params)
+            #@candidate.profile_image = "d"
             redirect_back(fallback_location: root_path)
         end
     end
