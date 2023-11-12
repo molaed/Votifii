@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_11_12_071250) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_071304) do
+>>>>>>> 9cd76650a4ba69773b6982c7e7d9a68f6a07ff08
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,8 +55,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_071250) do
     t.datetime "updated_at", null: false
     t.string "profile_image"
     t.text "speech"
+<<<<<<< HEAD
     t.string "image_link"
+=======
+    t.integer "voters", default: [], array: true
+>>>>>>> 9cd76650a4ba69773b6982c7e7d9a68f6a07ff08
     t.index ["election_id"], name: "index_candidates_on_election_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "election_id", null: false
+    t.bigint "candidate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["candidate_id"], name: "index_comments_on_candidate_id"
+    t.index ["election_id"], name: "index_comments_on_election_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "elections", force: :cascade do |t|
@@ -88,5 +108,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_071250) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "candidates", "elections"
+  add_foreign_key "comments", "candidates"
+  add_foreign_key "comments", "elections"
+  add_foreign_key "comments", "users"
   add_foreign_key "elections", "users"
 end

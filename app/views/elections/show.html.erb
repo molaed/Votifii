@@ -35,6 +35,12 @@
      </div>
   <% end %>
 
+   <% if @election.candidates.count() != 0 %>
+      <div>
+        <%= render 'candidates/voteBallot', election: @election %>
+     </div>
+     
+  <% end %>
   <% @election.candidates.order(:name).each do |candidate| %>
     <p>
       <strong> Candidate: </strong>
@@ -43,19 +49,25 @@
       <strong> Description: </strong>
       <%= candidate.description%> <br>
 
+      <strong> Speech: </strong>
+      <%= simple_format(candidate.speech) %> <br>
+
       <strong> Votes: </strong>
       <%= candidate.voteCount %> <br>
+
+  <% candidate.comments.each do |comment| %>
+    <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+  <% end %>
+
+  <%= form_with(model: [current_user, @election, candidate, Comment.new], url: user_election_candidate_comments_path(current_user, @election, candidate), method: :post) do |form| %>
+    <%= form.text_area :content, placeholder: 'Add a comment' %>
+    <%= form.submit 'Post Comment' %>
+  <% end %>
 
       <p>---------------------------------------------------</p>
       
     </p>
     </p>
-  <% end %>
-
-  <% if @election.candidates.count() != 0 %>
-      <div>
-        <%= render 'candidates/voteBallot', election: @election %>
-     </div>
   <% end %>
   </div>
 </body>

@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html class="center-content">
+<!-- The document type declaration and opening HTML tag with a class "center-content" for styling purposes. -->
 
 <head>
   <title>Votifii</title>
+  <!-- The head section contains metadata and links to external resources. -->
+
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Viewport meta tag for responsive design on different devices. -->
+
   <%= csrf_meta_tags %>
+  <!-- Meta tags related to Cross-Site Request Forgery (CSRF) protection. -->
+
   <%= csp_meta_tag %>
+  <!-- Content Security Policy (CSP) meta tag for specifying security policies for resources. -->
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <!-- Link tags for including stylesheets. "application" is the default stylesheet, and "data-turbo-track" is a TurboDrive attribute for automatic page reloading. -->
 
   <%= javascript_importmap_tags %>
+  <!-- Tags for managing JavaScript import maps, which define the mapping between logical module names and file URLs. -->
 
 </head>
 
@@ -17,12 +27,20 @@
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <!-- Display flash messages for notices and alerts. -->
+
   <% if user_signed_in? %>
     <%= render partial: "shared/loggednavbar" %>
   <% else %>
     <%= render partial: "shared/unloggednavbar" %>
   <% end %>
+  <!-- Conditionally render different navigation bars based on whether the user is signed in or not. -->
+
   <%= yield %>
+  <!-- The yield tag is a placeholder where the content of the specific view will be inserted. -->
+
+  <%= @image %>
+  <!-- Display an image, the source of which is specified by the @image instance variable. -->
 
 </body>
 

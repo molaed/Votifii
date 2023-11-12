@@ -1,7 +1,4 @@
-#main {
-
-
-}
+/* This sets the color of the background and organizes linear gradients in specific regions */
 html{ 
   background: 
     linear-gradient(180deg, rgba(248, 184, 139,0) 20%, rgba(248, 184, 139,.1) 20%, rgba(248, 184, 139,.1) 40%, rgba(248, 184, 139,.2) 40%, rgba(248, 184, 139,.2) 60%, rgba(248, 184, 139,.4) 60%, rgba(248, 184, 139,.4) 80%, rgba(248, 184, 139,.5) 80%),
@@ -15,59 +12,84 @@ html{
   background-size: 100% 100%;
   min-height: 100%;
 }
+/* Styles for centering content vertically and horizontally */
 .center-content {
   font-family: 'Arial', sans-serif;
   font-size: 1.5em;
   display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  padding: 20px; 
+  margin-top: 50px; 
+  margin-left: 50px;
 }
 
+/* Styles for navigation item */
 .nav-item {
     display: inline-block;
 }
 
+/* Styles for buttons */
 .btn {
-  padding: 15px 20px; /* Adjust the padding values to make the button bigger */
-  font-size: 16px;   /* Adjust the font size as needed */
+  padding: 15px 20px; 
+  font-size: 16px;  
 }
 
-/* unvisited link */
+/* Styles for unvisited links */
 a:link {
   color: #406FDB;
 }
 
+/* Styles for visited links */
 a:visited {
   color: #406FDB;
 }
 
+/* Styles for links on hover */
 a:hover {
   color: #81A1EB;
 }
 
+/* Styles for active links */
 a:active {
   color: #8cf2ff;
 }
+
+/* Styles for the top navigation bar */
 .topnav {
   background-color: #333;
   overflow: hidden;
 }
 
-.custom-text{
+/* Custom text styles */
+.custom-text {
   color: #5b5ea6;
   font-size: 15px;
   font-weight: 500;
 }
 
-.header-text{
+/* Header text styles */
+.header-text {
   color: #34568B;
   font-size: 55px;
   font-weight: bold;
 }
 
-.field-text{
+/* Field text styles */
+.field-text {
   color: #5b5ea6;
   font-size: 20px;
   font-weight: bold;
+}
+
+.non-pressable {
+  color: #406FDB;
+  pointer-events: none;
+  font-size: 4.5rem;
+}
+
+.logo-text {
+  cursor: default;
+  text-decoration: none;
+  color: #406FDB; /* Change to your preferred text color */
+  font-size: 4.5rem; /* Adjust the font size as needed */
 }

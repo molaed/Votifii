@@ -54,24 +54,31 @@ class ElectionsController < ApplicationController
     end
   end
 
+  def find_winners(candidates)
+    max_vote_count = @candidates.maximum(:voteCount)
+    cands_with_max_votes = @candidates.where(voteCount: max_vote_count)
+    cands_with_max_votes
+  end
+
   def end
     @election = Election.find(params[:id])
     if @election.user == current_user #Make sure they have permission
       
       @candidates = @election.candidates
-      @winner = @candidates.max_by(&:voteCount)
-      if @winner
-        @election.update(winner_id: @winner.id)
-      else
+      # @winner = @candidates.max_by(&:voteCount)
+      @winners = find_winners(@candidates)
+
+      if @winners.length == 1 # important -- only archive the election if there is a clear winner!
+        @election.update(winner_id: @winners.first.id)
+        @election.archive_election
+      else  # if more than one person, then nobody wins
         @election.update(winner_id: nil)
       end
-      # puts "winner is: #{@election.winner_id}"
-      @election.archive_election
-      redirect_to election_path(@election)
+      redirect_to election_path(@election) 
     end
   end
 
-  
+
 
   private
     def election_params

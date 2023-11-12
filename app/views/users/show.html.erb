@@ -1,33 +1,17 @@
 <body id="background">
   <div id="main">
+    <h1><%= @user.name %></h1> <br>
 
-    <%= image_tag "https://encrypted-tbn2.gstatic
-    .com/images?q=tbn:ANd9GcR2v8jGQFEHwDE0bEIm2Sofs-0n5RUWyiNtY_JQw46IozVB-YPU" %> <br><br>
+    <h3>Candidate: <%= @user.candidate %></h3> <br>
+    <h3>Currently: <%= @user.currentPosition %></h3> <br>
 
-    <h1> <%= @user.email %> </h1> <br>
-
-    <h3> Candidate: </h3> <br>
-    <h3> Currently: </h3> <br>
-
-    <h2> Experience </h2>
-    <ul>
-      <li></li>
-    </ul>
-
-    <h2> Education </h2>
-    <ul>
-      <li></li>
-    </ul>
-
-    <h2>Accolades</h2>
-    <ul>
-      <li></li>
-    </ul>
-
-    <h2>Connections</h2>
-    <ul>
-      <li></li>
-    </ul>
-
+    <h2>Experience: <%= @user.experience %></h2>
+    <h2>Education: <%= @user.education %></h2>
+    <h2>Accolades: <%= @user.accolades %></h2>
+    <h2>Connections: <%= @user.connections %></h2>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit Profile', edit_user_path %></br>
+      <%= link_to 'Edit Account', edit_user_registration_path %>
+    <% end %>
   </div>
 </body>

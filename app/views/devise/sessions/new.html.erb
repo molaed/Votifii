@@ -1,27 +1,27 @@
-<h2 class = "header-text">Log in</h2>
+<h2 class="header-text">Log in</h2> <!-- Display a heading with the class "header-text" indicating that the user is on the login page. -->
 
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %> <!-- Generate a form for user login. The form is configured to submit to the session_path using the session resource and method. -->
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email, class: "field-text"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: "field-text"%><br /> <!-- Display a label for the email input field with the class "field-text." -->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %> <!-- Display an email input field with autofocus enabled and autocomplete set to "email." -->
   </div>
 
   <div class="field">
-    <%= f.label :password, class: "field-text" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class: "field-text" %><br /> <!-- Display a label for the password input field with the class "field-text." -->
+    <%= f.password_field :password, autocomplete: "current-password" %> <!-- Display a password input field with autocomplete set to "current-password." -->
   </div>
 
-  <% if devise_mapping.rememberable? %>
+  <% if devise_mapping.rememberable? %> <!-- Check if the application has the rememberable feature enabled. -->
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, class: "field-text"%>
+      <%= f.check_box :remember_me %> <!-- Display a checkbox for "remember me" functionality. -->
+      <%= f.label :remember_me, class: "field-text"%> <!-- Display a label for the "remember me" checkbox with the class "field-text." -->
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in" %> <!-- Display a submit button labeled "Log in" to trigger the form submission. -->
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> <!-- Render shared links, likely related to authentication, such as sign-up or password recovery links. -->

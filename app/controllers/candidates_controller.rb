@@ -31,8 +31,7 @@ class CandidatesController < ApplicationController
         candidate.increment(:voteCount) #Instead of increment, can call method declared in candidate.rb
         candidate.save 
         redirect_to election_path(candidate.election)
-    end
-    
+      end
 
 private
     def candidate_params

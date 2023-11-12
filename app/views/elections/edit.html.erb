@@ -1,17 +1,21 @@
-
 <body id="background">
     <div id="main">
-		<h1>Edit Election</h1>
-		<%if @election.user == current_user %> <!--Prevent editing-->
+		<h1>Edit Election</h1> <!-- Display a heading indicating that the user is on the page to edit an election. -->
 
-			<%= render "form", election: @election %>
+		<% if @election.user == current_user %> <!-- Check if the user attempting to edit the election is the owner of the election (the creator). -->
+			<!-- If the current user is the owner, allow editing by rendering the edit form and related components. -->
 
-			<%= render "candidates/showCandidates", election: @election %>
+			<%= render "form", election: @election %> <!-- Render a partial named "form" for editing the election. The 'election' variable is passed to the partial. -->
 
-			<%= render "candidates/addCandidates", election: @election %>
-		<% else %>
+			<%= render "candidates/showCandidates", election: @election %> <!-- Render a partial for showing the candidates associated with the election. -->
+
+			<%= render "candidates/addCandidates", election: @election %> <!-- Render a partial for adding candidates to the election. -->
+
+		<% else %> <!-- If the current user is not the owner, display a message indicating that they do not have permission to edit the election. -->
 			<h2>Cannot edit: No Permission</h2>
-		<%end%>
-		<%= link_to "Return", election_path(@election) %> <!--If someone gets stuck -->
+		<% end %>
+
+		<%= link_to "Return", election_path(@election) %> <!-- Display a link to return to the election details page. This link points to the 'election_path' with the 'election' variable. -->
+
 	</div>
 </body>
