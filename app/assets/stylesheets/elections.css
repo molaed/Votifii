@@ -79,3 +79,15 @@ a:active {
   font-size: 20px;
   font-weight: bold;
 }
+
+.non-pressable {
+  color: cyan;
+  pointer-events: none;
+}
+
+.logo-text {
+  cursor: default;
+  text-decoration: none;
+  color: cyan; /* Change to your preferred text color */
+  font-size: 1.5rem; /* Adjust the font size as needed */
+}
