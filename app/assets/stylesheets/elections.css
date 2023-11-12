@@ -17,9 +17,10 @@ html{
   font-family: 'Arial', sans-serif;
   font-size: 1.5em;
   display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  padding: 20px; 
+  margin-top: 50px; 
+  margin-left: 50px;
 }
 
 /* Styles for navigation item */
@@ -89,5 +90,5 @@ a:active {
   cursor: default;
   text-decoration: none;
   color: #406FDB; /* Change to your preferred text color */
-  font-size: 1.5rem; /* Adjust the font size as needed */
+  font-size: 4.5rem; /* Adjust the font size as needed */
 }
