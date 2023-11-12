@@ -1,15 +1,26 @@
 <body id="background">
+  <!-- The body tag represents the main content of the HTML document, and it has an id attribute set to "background." This id can be used for styling or scripting purposes. -->
+
   <div id="main">
+    <!-- Inside the body, there is a div tag with an id attribute set to "main." This div is used to group and structure the main content of the page. -->
 
     <h1>All Elections</h1>
+    <!-- Within the div, there is an h1 tag that represents a top-level heading. It displays the text "All Elections," indicating that the user is on a page showing all elections. -->
 
     <ul>
+      <!-- An unordered list (ul) is used to create a list of users with their associated elections. -->
       <% @users_with_elections.each do |user| %>
+        <!-- Iterate over each user in the collection of users with elections. -->
         <li>
+          <!-- For each user, create a list item (li) to display their email address as the host. -->
           <%= "Host: #{user.email}" %>
+
           <ul>
+            <!-- Nested unordered list to display the elections associated with the current user. -->
             <% user.elections.each do |election| %>
+              <!-- Iterate over each election associated with the current user. -->
               <li>
+                <!-- For each election, create a list item with a link to the election's details page. -->
                 <%= link_to election.title, election %>
               </li>
             <% end %>
@@ -19,6 +30,7 @@
     </ul>
 
     <%= link_to "New Election", new_election_path %>
+    <!-- Display a link to create a new election. The link points to the new_election_path, which is typically the path for creating a new election. -->
+
   </div>
 </body>
-
