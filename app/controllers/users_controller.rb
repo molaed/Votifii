@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
+
+  def index
+    @users = User.all
+  end
   
   def show
     # Use @user in your view to display user information

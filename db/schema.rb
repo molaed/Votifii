@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_071304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["candidate_id"], name: "index_comments_on_candidate_id"
-    #t.index ["election_id"], name: "index_comments_on_election_id"
+    t.index ["election_id"], name: "index_comments_on_election_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
