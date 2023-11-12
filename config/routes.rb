@@ -17,4 +17,12 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  #routes.rb
+  match 'users/:id' => 'users#show', via: :get
+  # or
+  get 'users/:id' => 'users#show'
+  # or
+  resources :users, only: [:show]
+
 end
