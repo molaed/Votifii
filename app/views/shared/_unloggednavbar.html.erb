@@ -1,19 +1,14 @@
 <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#">Votifii</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav nav-pills">
-      <li class="nav-item active">
+  <div class="nav" id="navbarNav">
+      <span class="nav-item active">
         <%= link_to "Home", root_path, class: "nav-link"%>
-      </li>
-      <li class="nav-item">
+      </span>
+      <span class="nav-item">
         <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
+      </span>
+      <span class="nav-item">
         <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
-      </li>
-    </ul>
+      </span>
   </div>
 </nav>

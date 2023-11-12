@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
+#This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_12_044417) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_053618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_044417) do
     t.string "status"
     t.bigint "user_id", null: false
     t.integer "voters", default: [], array: true
+    t.string "voter_email"
     t.index ["user_id"], name: "index_elections_on_user_id"
   end
 
@@ -73,6 +74,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_044417) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "candidate"
+    t.string "currentPosition"
+    t.string "experience"
+    t.string "education"
+    t.string "accolades"
+    t.string "connections"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
