@@ -12,6 +12,12 @@ html{
   background-size: 100% 100%;
   min-height: 100%;
 }
+hr {/*Format line*/
+  height:2px;
+  border-width:0;
+  color:gray;
+  background-color:gray
+}
 /* Styles for centering content vertically and horizontally */
 .center-content {
   font-family: 'Arial', sans-serif;

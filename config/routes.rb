@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/") to the home action in the ElectionsController
   root "elections#home"
-  resource :user, only: [:show, :edit, :update]
   resources :users
-
   # Defines RESTful routes for elections and nested routes for candidates
   resources :elections do
     member do
@@ -24,7 +22,6 @@ Rails.application.routes.draw do
   end
 
   # Defines a route for displaying user profiles
-  resources :users, only: [:show]
   # or alternatively, the following equivalent routes:
   # match 'users/:id' => 'users#show', via: :get
   # get 'users/:id' => 'users#show'
