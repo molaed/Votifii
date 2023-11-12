@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :elections do
       resources :candidates do
-        resources :comments, only: [:create, :destroy]
+        resources :comments, only: [:create, :destroy, :update]
       end
     end
   end

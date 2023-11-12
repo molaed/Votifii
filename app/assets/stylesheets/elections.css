@@ -12,6 +12,8 @@ html{
   background-size: 100% 100%;
   min-height: 100%;
 }
+
+
 hr {/*Format line*/
   height:2px;
   border-width:0;

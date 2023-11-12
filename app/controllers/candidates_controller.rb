@@ -21,7 +21,8 @@ class CandidatesController < ApplicationController
         end
     end
     def show
-        @candidate = Election.find(params[:candidate_id])
+        @election = Election.find(params[:election_id])
+        @candidate = @election.candidates.find(params[:candidate_id])
     end
     def checkInput
         @candidate = Election.find(params[:commit])

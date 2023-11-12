@@ -2,7 +2,6 @@ class Candidate < ApplicationRecord
   belongs_to :election, optional: true
   after_initialize :default_values
   has_many :comments, dependent: :destroy
-
   # has_one_attached :profile_image
 
   validates :speech, presence: true

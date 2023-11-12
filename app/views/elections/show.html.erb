@@ -41,6 +41,16 @@
      </div>
      
   <% end %>
+  <hr>
+    <div>
+      <span class="comment-content">Enable Comment Editing</span>
+      <!--Cool looking switch, enables editing-->
+      <label class="switch">
+        <input type="checkbox" checked="true" id="EditingEnabled" onchange="toggleCommentEdit()">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  <hr>
   <% @election.candidates.order(:name).each do |candidate| %>
     <p>
       <strong> Candidate: </strong>
@@ -55,16 +65,34 @@
       <strong> Votes: </strong>
       <%= candidate.voteCount %> <br>
 
-  <% candidate.comments.each do |comment| %>
-    <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
-  <% end %>
-
-  <%= form_with(model: [current_user, @election, candidate, Comment.new], url: user_election_candidate_comments_path(current_user, @election, candidate), method: :post) do |form| %>
-    <%= form.text_area :content, placeholder: 'Add a comment' %>
-    <%= form.submit 'Post Comment' %>
-  <% end %>
-
-      <p>---------------------------------------------------</p>
+    <% candidate.comments.each do |comment| %>
+      <li>
+        <strong><%= comment.user.name %>:</strong>
+        <!--In short, this displays comments, then displays edit and delete buttons--> 
+        <span class="comment-content"><%= comment.content %></span>
+        <div class="EditAndDeleteComments", style="display: block;">
+          <% if current_user == comment.user %>
+            <%= form_with(model: [current_user, @election, candidate, comment], method: :patch, url: user_election_candidate_comment_path(current_user, @election, candidate, comment), data: { confirm: 'Are you sure?' }) do |form| %>
+              <%= form.text_field :content %>
+              <%= form.submit 'Update Comment' %>
+            <% end %>
+          <% end %>
+          <% if current_user == comment.user  || current_user == @election.user %> <!--Election Owner can delete-->
+            <%= form_with(model: [current_user, @election, candidate, comment], method: :delete, url: user_election_candidate_comment_path(current_user, @election, candidate, comment), data: { confirm: 'Are you sure?' }) do |form| %>
+              <%= form.submit 'Delete Comment' %>    
+            <% end %>
+          <% end %>
+       </div>
+      </li>
+    <% end %>
+    <hr>
+    <!--Creates a Comment-->
+    <%= form_with(model: [current_user, @election, candidate, Comment.new], url: user_election_candidate_comments_path(current_user, @election.id, candidate.id), method: :post) do |form| %>
+      <%= form.hidden_field :election_id, value: @election.id %>
+      <%= form.text_area :content, placeholder: 'Add a comment' %>
+      <%= form.submit 'Post Comment' %>
+    <% end %>
+      <hr>
       
     </p>
     </p>
@@ -72,4 +100,96 @@
   </div>
 </body>
 
+<script>
+  //Enable/Disable comment edit form
+  function toggleCommentEdit() {
+     if (document.getElementById("EditingEnabled").checked == true) {
+      const collection = document.getElementsByClassName("EditAndDeleteComments");
+      for (var i = 0; i < collection.length; i++) { 
+        collection[i].style.display="block";
+      }
+     }
+     else {
+        const collection = document.getElementsByClassName("EditAndDeleteComments");
+      for (var i = 0; i < collection.length; i++) { 
+        collection[i].style.display="none";
+      }
+     }
+      
+  }
+</script>
 
+<style>
+
+  /* Removes the break between comment and editing and delete form
+  Add appropriate styling to position the form elements */
+  .comment-content {
+    margin-right: 10px; /* Adjust as needed */
+    display: inline-block;
+  }
+
+  /* Ensure the form elements are displayed inline */
+  form {
+    display: inline-block;
+  }
+  /*For the cool looking switch*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>
