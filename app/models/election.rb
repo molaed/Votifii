@@ -14,11 +14,6 @@ class Election < ApplicationRecord
     end
   end
 
-  def addVoter(voter)
-    self.voters.push(voter)
-  end
-
-
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :status, inclusion: { in: VALID_STATES }
