@@ -84,6 +84,7 @@ a:active {
 .non-pressable {
   color: #406FDB;
   pointer-events: none;
+  font-size: 4.5rem;
 }
 
 .logo-text {
