@@ -1,63 +1,92 @@
-
 <body id="background">
+    <!-- The body tag represents the main content of the HTML document, and it has an id attribute set to "background." This id can be used for styling or scripting purposes. -->
+
     <div id="main">
+        <!-- Inside the body, there is a div tag with an id attribute set to "main." This div is used to group and structure the main content of the page. -->
 
+        <h1><%= @election.title %></h1>
+        <!-- Display the title of the election using the instance variable @election.title. -->
 
-  <h1><%= @election.title %></h1>
-  <% if @election.winner_id.present? %>
-    <hr/>
-    <h4><strong>Winner:</strong></h4>
-    <% @winner=Candidate.find(@election.winner_id) %>
-    <p><em><%= @winner.name %></em> with <em><%= @winner.voteCount %> votes!</em></p>
-    <p><strong>Description:</strong> <%= @winner.description %>
-    <hr/>
-  <% else %>
-    <h3> No Winner </h3>
-  <% end %>
+        <% if @election.winner_id.present? %>
+            <!-- Check if the election has a winner. -->
+            <hr/>
+            <!-- Display a horizontal line as a separator. -->
 
-  <p><%= @election.description %></p>
+            <h4><strong>Winner:</strong></h4>
+            <!-- Display a heading indicating the winner. -->
+            <% @winner = Candidate.find(@election.winner_id) %>
+            <!-- Find the candidate with the ID stored as the winner in the election. -->
+            <p><em><%= @winner.name %></em> with <em><%= @winner.voteCount %> votes!</em></p>
+            <!-- Display the name and vote count of the winner. -->
+            <p><strong>Description:</strong> <%= @winner.description %></p>
+            <!-- Display the description of the winner. -->
+            <hr/>
+            <!-- Display another horizontal line as a separator. -->
+        <% else %>
+            <h3> No Winner </h3>
+            <!-- If there is no winner, display a message indicating that there is no winner. -->
+        <% end %>
 
-  <!--If current_user is election.user, show options-->
-  <% if @election.user == current_user %> 
-    <p>Options: <% if @election.status == "public" %> <%= link_to "End", end_election_path(@election) %> | <%= link_to "Edit", edit_election_path(@election) %> | <% end %> <%= link_to "Delete", election_path(@election), data: {
+        <p><%= @election.description %></p>
+        <!-- Display the description of the election. -->
+
+        <!-- Show options only if the current user is the owner of the election. -->
+        <% if @election.user == current_user %>
+            <p>Options:
+                <% if @election.status == "public" %>
+                    <%= link_to "End", end_election_path(@election) %> |
+                    <!-- If the election is public, display a link to end the election. -->
+                <% end %>
+                <%= link_to "Edit", edit_election_path(@election) %> |
+                <!-- Display a link to edit the election. -->
+                <%= link_to "Delete", election_path(@election), data: {
                         turbo_method: :delete,
                         turbo_confirm: "Are you sure?"
-                      } %>
-    </p>
-  <% end %>
+                    } %>
+                <!-- Display a link to delete the election with a confirmation prompt. -->
+            </p>
+        <% end %>
 
-  <h4> Current Candidates </h4>
-  <p>Current Count: <%= @election.candidates.count() %></p>
-  <% if @election.candidates.count() == 0 %>
-      <div>
-          You currently have no candidates added. 
-          <%= link_to "Add candidates here", edit_election_path(@election) %>
-     </div>
-  <% end %>
+        <h4> Current Candidates </h4>
+        <!-- Display a heading for the current candidates. -->
+        <p>Current Count: <%= @election.candidates.count() %></p>
+        <!-- Display the count of current candidates. -->
 
-  <% @election.candidates.order(:name).each do |candidate| %>
-    <p>
-      <strong> Candidate: </strong>
-      <%= candidate.name %> <br>
+        <% if @election.candidates.count() == 0 %>
+            <!-- Check if there are no candidates. -->
+            <div>
+                You currently have no candidates added.
+                <%= link_to "Add candidates here", edit_election_path(@election) %>
+                <!-- Display a message and a link to add candidates if none are present. -->
+            </div>
+        <% end %>
 
-      <strong> Description: </strong>
-      <%= candidate.description%> <br>
+        <% @election.candidates.order(:name).each do |candidate| %>
+            <!-- Iterate over each candidate associated with the election, ordered by name. -->
+            <p>
+                <strong> Candidate: </strong>
+                <%= candidate.name %> <br>
+                <!-- Display the name of the candidate. -->
 
-      <strong> Votes: </strong>
-      <%= candidate.voteCount %> <br>
+                <strong> Description: </strong>
+                <%= candidate.description %> <br>
+                <!-- Display the description of the candidate. -->
 
-      <p>---------------------------------------------------</p>
-      
-    </p>
-    </p>
-  <% end %>
+                <strong> Votes: </strong>
+                <%= candidate.voteCount %> <br>
+                <!-- Display the vote count of the candidate. -->
 
-  <% if @election.candidates.count() != 0 %>
-      <div>
-        <%= render 'candidates/voteBallot', election: @election %>
-     </div>
-  <% end %>
-  </div>
+                <p>---------------------------------------------------</p>
+                <!-- Display a separator between each candidate. -->
+            </p>
+        <% end %>
+
+        <% if @election.candidates.count() != 0 %>
+            <!-- Check if there are candidates present. -->
+            <div>
+                <%= render 'candidates/voteBallot', election: @election %>
+                <!-- Render a partial for the vote ballot if there are candidates. -->
+            </div>
+        <% end %>
+    </div>
 </body>
-
-
