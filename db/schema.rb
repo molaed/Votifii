@@ -50,7 +50,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_12_054750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_image"
+<<<<<<< HEAD
     t.integer "voters", default: [], array: true
+=======
+    t.text "speech"
+>>>>>>> a587cc78ccfaf0b669d7d4c36ce024409160eb05
     t.index ["election_id"], name: "index_candidates_on_election_id"
   end
 

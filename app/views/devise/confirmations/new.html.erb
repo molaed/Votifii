@@ -1,16 +1,16 @@
-<h2>Resend confirmation instructions</h2>
+<h2>Resend confirmation instructions</h2> <!-- Display a heading for the confirmation instructions resend section -->
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource, class: "custom-text"%>
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %> <!-- Create a form for resending confirmation instructions. The form is associated with a resource, likely a user, and is configured to submit to the confirmation_path with a post request -->
+  <%= render "devise/shared/error_messages", resource: resource, class: "custom-text"%> <!-- Render shared error messages, if any, for the resource (user) with a custom text class -->
 
   <div class="field">
-    <%= f.label :email , class: "field-text"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.label :email , class: "field-text"%><br /> <!-- Display a label for the email input field with a specified CSS class -->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %> <!-- Display an email input field. If the user has a pending reconfirmation, display the unconfirmed email; otherwise, display the regular email -->
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Resend confirmation instructions" %> <!-- Display a submit button with the label "Resend confirmation instructions" to trigger the form submission -->
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %> <!-- Render shared links, likely related to authentication, such as sign-in or sign-up links -->
