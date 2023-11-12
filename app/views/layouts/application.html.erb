@@ -1,36 +1,31 @@
 <!DOCTYPE html>
 <html class="center-content">
-  <head>
-    <title>Votifii</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %> 
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+<head>
+  <title>Votifii</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  </head>
+  <%= javascript_importmap_tags %>
+
+</head>
+
+<body>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <% if user_signed_in? %>
+    <%= render partial: "shared/loggednavbar" %>
+  <% else %>
+    <%= render partial: "shared/unloggednavbar" %>
+  <% end %>
+  <%= yield %>
 
-  <body>
+</body>
 
-  <button>
-      <%= link_to "Home Page", root_path %>
-  </button>
-
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to "Hi, #{current_user.email}", edit_user_registration_path %></li>
-      <li><%= link_to "Sign Out", destroy_user_session_path %>></li>
-    <% else %>
-      <li><%= link_to "Sign In", new_user_session_path %></li>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-    <% end %>
-  </ul>
-    <%= yield %>
-  </body>
 </html>

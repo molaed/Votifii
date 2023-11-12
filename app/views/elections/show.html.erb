@@ -17,11 +17,15 @@
 
   <p><%= @election.description %></p>
 
-  <p>Options: <% if @election.status == "public" %> <%= link_to "End", end_election_path(@election) %> | <%= link_to "Edit", edit_election_path(@election) %> | <% end %> <%= link_to "Delete", election_path(@election), data: {
-                      turbo_method: :delete,
-                      turbo_confirm: "Are you sure?"
-                    } %>
-  </p>
+  <!--If current_user is election.user, show options-->
+  <% if @election.user == current_user %> 
+    <p>Options: <% if @election.status == "public" %> <%= link_to "End", end_election_path(@election) %> | <%= link_to "Edit", edit_election_path(@election) %> | <% end %> <%= link_to "Delete", election_path(@election), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      } %>
+    </p>
+  <% end %>
+
   <h4> Current Candidates </h4>
   <p>Current Count: <%= @election.candidates.count() %></p>
   <% if @election.candidates.count() == 0 %>

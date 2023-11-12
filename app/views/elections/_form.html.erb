@@ -1,22 +1,21 @@
+<%= form_with model: election do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% election.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-      <%= form_with model: election do |form| %>
-        <div>
-          <%= form.label :title %><br>
-          <%= form.text_field :title %>
-          <% election.errors.full_messages_for(:title).each do |message| %>
-            <div><%= message %></div>
-          <% end %>
-        </div>
+  <div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %><br>
+    <% election.errors.full_messages_for(:description).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
 
-        <div>
-          <%= form.label :description %><br>
-          <%= form.text_area :description %><br>
-          <% election.errors.full_messages_for(:description).each do |message| %>
-            <div><%= message %></div>
-          <% end %>
-        </div>
-
-        <div>
-          <%= form.submit %>
-        </div>
-      <% end %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

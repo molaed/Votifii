@@ -1,18 +1,24 @@
 <body id="background">
-    <div id="main">
+  <div id="main">
 
-      <h1>Home Page</h1>
+    <h1>All Elections</h1>
 
-      <ul>
-        <% @elections.each do |election| %>
-          <li>
-            <%= link_to election.title, election %>
-          </li>
-        <% end %>
-      </ul>
+    <ul>
+      <% @users_with_elections.each do |user| %>
+        <li>
+          <%= "Host: #{user.email}" %>
+          <ul>
+            <% user.elections.each do |election| %>
+              <li>
+                <%= link_to election.title, election %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
 
-      <%= link_to "New Election", new_election_path %>
+    <%= link_to "New Election", new_election_path %>
   </div>
 </body>
-
 

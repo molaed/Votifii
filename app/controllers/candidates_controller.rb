@@ -1,19 +1,23 @@
 class CandidatesController < ApplicationController
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: :increment_votes
     
     def create
         @election = Election.find(params[:election_id])
-       # @election.update_attribute(:candidateCount, @election.candidateCount + 1)
-        @candidate = @election.candidates.create(candidate_params)
-        redirect_back(fallback_location: root_path)
+        if @election.user == current_user #Make sure they have permission
+            #@election.update_attribute(:candidateCount, @election.candidateCount + 1)
+            @candidate = @election.candidates.create(candidate_params)
+            redirect_back(fallback_location: root_path)
+        end
     end
     def destroy
         @election = Election.find(params[:election_id])
-       # @election.update_attribute(:candidateCount, @election.candidateCount - 1)
-        @candidate = @election.candidates.find(params[:id])
-        @candidate.destroy
-        redirect_to edit_election_path(@election), status: :see_other
+        if @election.user == current_user #Make sure they have permission
+            #@election.update_attribute(:candidateCount, @election.candidateCount - 1)
+            @candidate = @election.candidates.find(params[:id])
+            @candidate.destroy
+            redirect_to edit_election_path(@election), status: :see_other
+        end
     end
 
     def checkInput

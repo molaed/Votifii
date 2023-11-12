@@ -39,3 +39,21 @@ a:active {
   background-color: #333;
   overflow: hidden;
 }
+
+.custom-text{
+  color: #5b5ea6;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.header-text{
+  color: #34568B;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.field-text{
+  color: #5b5ea6;
+  font-size: 20px;
+  font-weight: bold;
+}
