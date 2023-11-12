@@ -81,7 +81,7 @@ a:active {
 }
 
 .non-pressable {
-  color: cyan;
+  color: #406FDB;
   pointer-events: none;
 }
 
