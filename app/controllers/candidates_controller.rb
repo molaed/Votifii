@@ -11,6 +11,17 @@ class CandidatesController < ApplicationController
             redirect_back(fallback_location: root_path)
         end
     end
+
+    def update
+        @election = Election.find(params[:election_id])
+        @candidate = @election.candidates.find(params[:id])
+        if @election.user == current_user #Make sure they have permission
+            #@election.update_attribute(:candidateCount, @election.candidateCount + 1)
+            @candidate.update(candidate_params)
+            redirect_to edit_election_path(@election)
+        end
+    end
+
     def destroy
         @election = Election.find(params[:election_id])
         if @election.user == current_user #Make sure they have permission
