@@ -24,7 +24,7 @@
     </span>
 
     <span class="nav-item">
-      <%= link_to "Hi, #{current_user.email}", user_path, class: "nav-link" %>
+      <%= link_to "Hi, #{current_user.name}", user_path(current_user), class: "nav-link" %>
       <!-- Display a personalized greeting and a link to edit the user's registration information using the link_to helper. -->
     </span>
 
@@ -32,7 +32,7 @@
       <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link"%>
       <!-- Display a link to sign out with the text "Sign Out" using the link_to helper. -->
     </span>
-
+    <hr>
   </div>
 </nav>
 <!-- The closing tag for the Bootstrap navbar. -->

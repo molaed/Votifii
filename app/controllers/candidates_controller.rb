@@ -20,7 +20,10 @@ class CandidatesController < ApplicationController
             redirect_to edit_election_path(@election), status: :see_other
         end
     end
-
+    def show
+        @election = Election.find(params[:election_id])
+        @candidate = @election.candidates.find(params[:candidate_id])
+    end
     def checkInput
         @candidate = Election.find(params[:commit])
         @candidate.description = "hello "

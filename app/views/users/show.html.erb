@@ -1,7 +1,8 @@
 <body id="background">
   <div id="main">
-    <h1><%= @user.name %></h1> <br>
 
+    <h1><%= @user.name %></h1> <br>
+    <h1><%= @user.email %></h1> <br>
     <h3>Candidate: <%= @user.candidate %></h3> <br>
     <h3>Currently: <%= @user.currentPosition %></h3> <br>
 
@@ -9,9 +10,9 @@
     <h2>Education: <%= @user.education %></h2>
     <h2>Accolades: <%= @user.accolades %></h2>
     <h2>Connections: <%= @user.connections %></h2>
-    <% if user_signed_in? %>
-      <%= link_to 'Edit Profile', edit_user_path %></br>
-      <%= link_to 'Edit Account', edit_user_registration_path %>
+    <% if user_signed_in? && @user == current_user %><!--Prevent editing unless owner-->
+      <%= link_to 'Edit Profile', edit_user_path(@user) %></br>
+      <%= link_to 'Edit Account', edit_user_registration_path(@user) %>
     <% end %>
   </div>
 </body>

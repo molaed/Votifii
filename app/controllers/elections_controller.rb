@@ -4,7 +4,12 @@ class ElectionsController < ApplicationController
 
   def index
     @users_with_elections = User.joins(:elections).distinct
-    @elections = Election.all
+    #If search, only show search
+    if params[:search]
+      @elections = Election.where('title LIKE ?', "%#{params[:search]}%")
+    else
+      @elections = Election.all
+    end
   end
 
   def show
