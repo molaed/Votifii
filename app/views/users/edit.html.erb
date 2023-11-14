@@ -1,6 +1,11 @@
 <h1>Edit Profile</h1>
-<% if @user == current_user %><!--Prevent editing unless owner-->
+
+<!-- Check if the current user is the owner before allowing editing -->
+<% if @user == current_user %>
+  <!-- Form for updating user profile, using PATCH method and allowing file uploads -->
   <%= form_for @user, url: user_path, method: :patch, html: { multipart: true } do |f| %>
+
+    <!-- Input fields for various user profile attributes -->
     <%= f.label :name %></br>
     <%= f.text_field :name %></br>
 
@@ -22,8 +27,10 @@
     <%= f.label :connections %></br>
     <%= f.text_field :connections %></br>
 
+    <!-- Submit button to update the user profile -->
     <%= f.submit 'Update Profile' %>
   <% end %>
 <% else %>
+  <!-- Display a message if the current user does not have permission to edit -->
   <h3>No permission to edit: <%= @user.email %> </h3>
 <% end %>
