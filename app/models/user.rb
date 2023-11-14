@@ -9,6 +9,6 @@ class User < ApplicationRecord
 
 private
   def default_values
-    self.name = "User"
+    self.name ||= "User"
   end
 end
