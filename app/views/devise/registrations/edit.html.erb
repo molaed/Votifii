@@ -1,4 +1,4 @@
-<% if user == current_user %> <!--Prevent from editing unless owner-->
+<% if resource == current_user %> <!--Prevent from editing unless owner-->
 <h2>Edit <%= resource_name.to_s.humanize %></h2> <!-- Display a heading indicating that the user is on the account editing page. -->
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> <!-- Generate a form for editing account information for a specific resource (likely a user). The form is configured to submit a PUT request to the registration_path. -->
@@ -49,5 +49,5 @@
 <%= link_to "Back", :back %> <!-- Display a link to go back to the previous page. -->
 
 <%else%>
-  <h3>No permission to edit: <%= @user.email %> </h3>
+  <h3>No permission to edit: <%= @resource.email %> </h3>
 <%end%>
