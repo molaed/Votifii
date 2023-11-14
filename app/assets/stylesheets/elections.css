@@ -42,6 +42,10 @@ hr {/*Format line*/
   font-size: 16px;  
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Styles for unvisited links */
 a:link {
   color: #6c2cab;
