@@ -1,24 +1,35 @@
 <h3>All User Profiles</h3>
+
+<!-- Horizontal line for visual separation -->
 <hr>
+
+<!-- User search form with a text field and submit button -->
 <div>
   <%= form_with(url: users_path, method: :get) do |form| %>
     <%= form.text_field :search, placeholder: 'Search by name' %>
     <%= form.submit 'Search' %>
   <% end %>
+
+  <!-- Display the count of currently displayed users and the total user count -->
   <p style="font-size: 12px;padding: 1px;margin: 5px;">
     <%= @users.count()%> out of <%= User.count()%> displayed.
   </p>
+
+  <!-- Horizontal line for visual separation -->
   <hr>
+
+  <!-- Loop through each user and display their name, email, and candidate status -->
   <% @users.order(:name).order(:email).each do |user| %>
-      
+    <ul>
+      <li>Name: <%= user.name %></li>
       <ul>
-        <li>Name: <%= user.name %></li>
-        <ul>
-          <li>Email: <%= user.email %></li>
-          <li>Candidate: <%= user.candidate %></li>
-        </ul>
-        <li><%= link_to 'View Profile', user_path(user) %> <% if user == current_user %> <!--Prevent editing unless owner--><%= link_to 'Edit Profile', edit_user_path(user) %> <% end %></li>
+        <li>Email: <%= user.email %></li>
+        <li>Candidate: <%= user.candidate %></li>
       </ul>
-      <hr>
+      <!-- Links to view and, if the user is the current user, edit the profile -->
+      <li><%= link_to 'View Profile', user_path(user) %> <% if user == current_user %><%= link_to 'Edit Profile', edit_user_path(user) %> <% end %></li>
+    </ul>
+    <!-- Horizontal line for visual separation between user entries -->
+    <hr>
   <% end %>
 </div>
