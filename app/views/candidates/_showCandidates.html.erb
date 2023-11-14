@@ -1,38 +1,170 @@
-<p> Current Candidates </p>
+<body>
 
-<% if @election.candidates.count() == 0 %>
-    <div>
-        <p> You currently have no candidates added. </p>
-   </div>
-<% end %>
+  <h3 style="margin-bottom: 0;"> Current Candidates </h3>
 
-<% @election.candidates.order(:name).each do |candidate| %>
-  <p>
-    <strong> Candidate: </strong>
-    <%= candidate.name %> <br>
-    <% unless candidate.image_link.nil? %>
-      <%= image_tag candidate.image_link, style: 'max-width: 200px; max-height: 200px;' %>
+  <% if @election.candidates.count() == 0 %>
+      <div>
+          <p> You currently have no candidates added. </p>
+     </div>
+  <% end %>
+
+  <div>
+    <span class="candidate-content">Enable Candidate Editing</span>
+    <!--Cool looking switch, enables editing-->
+    <label class="switch">
+      <input type="checkbox" checked="true" id="EditingEnabled" onchange="toggleCandidateEdit()">
+      <span class="slider round"></span>
+    </label>
+  </div>
+
+  <div>
+    <% @election.candidates.order(:name).each do |candidate| %>
+      <div class="DisplayCandidate" style="display: none; font-size: 15px">
+          <strong> Candidate: </strong>
+          <%= candidate.name %> <br>
+
+          <%= image_tag candidate.image_link, style: 'max-width: 200px; max-height: 200px;' %>
+          <br/>
+
+          <strong> Description: </strong>
+          <%= candidate.description%> <br>
+
+          <strong> Speech: </strong>
+          <%= simple_format(candidate.speech)  %><br>
+
+          <strong> Votes: </strong>
+          <%= candidate.voteCount %> <br>
+     </div>
+      
+      <div class="EditAndDeleteCandidate">
+        
+          <%= form_with model: [candidate.election, candidate ] do |form| %>
+
+              <div style="font-size: 15px;"><%= form.label :name %><br>
+              <%= form.text_field :name %><br>
+
+              <%= form.label :description %><br>
+              <%= form.text_area :description %><br>
+
+              <%= form.label :speech %><br>
+              <%= form.text_area :speech%><br>
+              </div>
+              <div style="margin-right: 0;padding-right: 0;">
+              <%= form.submit %>
+              
+          <% end %>
+        
+          <%= form_with(model: [candidate.election, candidate ], method: :delete, url: election_candidate_path(@election, candidate), data: { confirm: 'Are you sure?' }) do |form| %>
+            <%= form.submit 'Delete ' + candidate.name %>    
+          <% end %>
+        </div>
+      </div>
+      <hr>
     <% end %>
-    <br />
+  </div>
 
-    <strong> Description: </strong>
-    <%= candidate.description%> <br>
+</body>
+<script>
+  //Enable/Disable comment edit form
+  function toggleCandidateEdit() {
+     if (document.getElementById("EditingEnabled").checked == true) {
+      const collection = document.getElementsByClassName("EditAndDeleteCandidate");
+      for (var i = 0; i < collection.length; i++) { 
+        collection[i].style.display="block";
+      }
+      const collection2 = document.getElementsByClassName("DisplayCandidate");
+      for (var i = 0; i < collection2.length; i++) { 
+        collection2[i].style.display="none";
+      }
+     }
+     else {
+        const collection = document.getElementsByClassName("EditAndDeleteCandidate");
+      for (var i = 0; i < collection.length; i++) { 
+        collection[i].style.display="none";
+      }
+      const collection2 = document.getElementsByClassName("DisplayCandidate");
+      for (var i = 0; i < collection2.length; i++) { 
+        collection2[i].style.display="block";
+      }
+     }
+      
+  }
+</script>
 
-    <strong> Speech: </strong>
-    <%= simple_format(candidate.speech)  %><br>
+<style>
+  h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  /* Removes the break between comment and editing and delete form
+  Add appropriate styling to position the form elements */
+  .candidate-content {
+    margin-right: 10px; /* Adjust as needed */
+    display: inline-block;
+    font-size: 15px;
+  }
 
-    <strong> Votes: </strong>
-    <%= candidate.voteCount %> <br>
-    
-    <p>---------------------------------------------------</p>
-<% end %>
+  /* Ensure the form elements are displayed inline */
+  form {
+    display: inline-block;
+  }
+  /*For the cool looking switch*/
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+  }
 
-<% @election.candidates.order(:name).each do |candidate| %>
-  </p>
-  <%= link_to "Destroy " + candidate.name, [candidate.election, candidate], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-  </p>
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
 
-<% end %>
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 2px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+
+    transform: translateX(20px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 17px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>

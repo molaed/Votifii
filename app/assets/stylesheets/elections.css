@@ -44,17 +44,17 @@ hr {/*Format line*/
 
 /* Styles for unvisited links */
 a:link {
-  color: #406FDB;
+  color: #6c2cab;
 }
 
 /* Styles for visited links */
 a:visited {
-  color: #406FDB;
+  color: #6c2cab;
 }
 
 /* Styles for links on hover */
 a:hover {
-  color: #81A1EB;
+  color: #81a1eb;
 }
 
 /* Styles for active links */

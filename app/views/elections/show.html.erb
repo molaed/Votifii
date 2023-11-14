@@ -26,8 +26,7 @@
     </p>
   <% end %>
 
-  <h4> Current Candidates </h4>
-  <p>Current Count: <%= @election.candidates.count() %></p>
+
   <% if @election.candidates.count() == 0 %>
       <div>
           You currently have no candidates added. 
@@ -39,8 +38,8 @@
       <div>
         <%= render 'candidates/voteBallot', election: @election %>
      </div>
-     
   <% end %>
+  <h4> Current Candidates </h4>
   <hr>
     <div>
       <span class="comment-content">Enable Comment Editing</span>
@@ -61,15 +60,17 @@
       <strong> Description: </strong>
       <%= candidate.description%> <br>
 
-      <strong> Speech: </strong>
-      <%= simple_format(candidate.speech) %> <br>
-
       <strong> Votes: </strong>
       <%= candidate.voteCount %> <br>
 
+      <strong> Speech: </strong>
+      <%= simple_format(candidate.speech) %> <br>
+
+      
+
     <% candidate.comments.each do |comment| %>
       <li>
-        <strong><%= comment.user.name %>:</strong>
+        <strong><%= link_to comment.user.name, comment.user,{:style=>'text-decoration: none;'}%>:</strong>
         <!--In short, this displays comments, then displays edit and delete buttons--> 
         <span class="comment-content"><%= comment.content %></span>
         <div class="EditAndDeleteComments", style="display: block;">
@@ -122,7 +123,10 @@
 </script>
 
 <style>
-
+  h4 {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
   /* Removes the break between comment and editing and delete form
   Add appropriate styling to position the form elements */
   .comment-content {
