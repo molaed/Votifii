@@ -1,0 +1,7 @@
+<p> class = "custom-text">Hello <%= @resource.email %>!</p> <!-- Display a greeting message with the user's email, using a custom text class. -->
+
+<p> class = "custom-text">Your account has been locked due to an excessive number of unsuccessful sign-in attempts.</p> <!-- Display a message informing the user that their account has been locked due to too many unsuccessful sign-in attempts. -->
+
+<p> class = "custom-text">Click the link below to unlock your account:</p> <!-- Display a message instructing the user to click the link below to unlock their account. -->
+
+<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p> <!-- Generate a hyperlink labeled "Unlock my account" that links to the unlock_url, including the user resource (likely a user instance) and an unlock token. This token is typically used to authenticate and authorize the account unlock request. -->

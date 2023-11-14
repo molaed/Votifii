@@ -1,0 +1,5 @@
+<p>Welcome <%= @email %>!</p> <!-- Display a welcome message with the user's email address -->
+
+<p>class = "custom-text">You can confirm your account email through the link below:</p> <!-- Display a message indicating that the user can confirm their account email through a provided link -->
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p> <!-- Generate a hyperlink labeled "Confirm my account" that links to the confirmation URL. The confirmation URL includes the user resource (likely a user instance) and a confirmation token. The confirmation token is typically used to verify the authenticity of the confirmation request. -->

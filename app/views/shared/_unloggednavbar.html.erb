@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg">
+  <!-- The opening tag for a Bootstrap navbar with a responsive design. -->
+
+  <span class="navbar-brand non-pressable">
+    <!-- The brand/logo section of the navbar. -->
+    Votifii
+    <!-- Display the text "Votifii" as the brand/logo. -->
+  </span>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- The collapsible section of the navbar. -->
+
+    <%= link_to "Home", root_path, class: "nav-link"%>
+    <!-- Display a link to the home page with the text "Home" using the link_to helper. -->
+
+    <span class="nav-item">
+      <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+      <!-- Display a link to the sign-in page with the text "Sign In" using the link_to helper. -->
+    </span>
+
+    <span class="nav-item">
+      <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+      <!-- Display a link to the sign-up page with the text "Sign Up" using the link_to helper. -->
+    </span>
+    <hr>
+  </div>
+</nav>

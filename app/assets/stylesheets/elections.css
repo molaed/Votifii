@@ -1,29 +1,107 @@
-#main {
-	border: 1px solid white;
-	margin: 1% 1% 1% 1%;
-	padding: 1% 1% 1% 1%;
-	color: white;
+/* This sets the color of the background and organizes linear gradients in specific regions */
+html{ 
+  background: 
+    linear-gradient(180deg, rgba(248, 184, 139,0) 20%, rgba(248, 184, 139,.1) 20%, rgba(248, 184, 139,.1) 40%, rgba(248, 184, 139,.2) 40%, rgba(248, 184, 139,.2) 60%, rgba(248, 184, 139,.4) 60%, rgba(248, 184, 139,.4) 80%, rgba(248, 184, 139,.5) 80%),
+    linear-gradient(45deg, rgba(250, 248, 132,.3) 20%, rgba(250, 248, 132,.4) 20%, rgba(250, 248, 132,.4) 40%, rgba(250, 248, 132,.5) 40%, rgba(250, 248, 132,.5) 60%, rgba(250, 248, 132,.6) 60%, rgba(250, 248, 132,.6) 80%, rgba(250, 248, 132,.7) 80%),
+    linear-gradient(-45deg, rgba(186, 237, 145,0) 20%, rgba(186, 237, 145,.1) 20%, rgba(186, 237, 145,.1) 40%, rgba(186, 237, 145,.2) 40%, rgba(186, 237, 145,.2) 60%, rgba(186, 237, 145,.4) 60%, rgba(186, 237, 145,.4) 80%, rgba(186, 237, 145,.6) 80%),
+    linear-gradient(90deg, rgba(178, 206, 254,0) 20%, rgba(178, 206, 254,.3) 20%, rgba(178, 206, 254,.3) 40%, rgba(178, 206, 254,.5) 40%, rgba(178, 206, 254,.5) 60%, rgba(178, 206, 254,.7) 60%, rgba(178, 206, 254,.7) 80%, rgba(178, 206, 254,.8) 80%),
+    linear-gradient(-90deg, rgba(242, 162, 232,0) 20%, rgba(242, 162, 232,.4) 20%, rgba(242, 162, 232,.4) 40%, rgba(242, 162, 232,.5) 40%, rgba(242, 162, 232,.5) 60%, rgba(242, 162, 232,.6) 60%, rgba(242, 162, 232,.6) 80%, rgba(242, 162, 232,.8) 80%),
+    linear-gradient(180deg, rgba(254, 163, 170,0) 20%, rgba(254, 163, 170,.4) 20%, rgba(254, 163, 170,.4) 40%, rgba(254, 163, 170,.6) 40%, rgba(254, 163, 170,.6) 60%, rgba(254, 163, 170,.8) 60%, rgba(254, 163, 170,.8) 80%, rgba(254, 163, 170,.9) 80%)
+;
+  background-color: rgb(254, 163, 170);
+  background-size: 100% 100%;
+  min-height: 100%;
 }
-#background {
-	background-color: black;
+
+
+hr {/*Format line*/
+  height:2px;
+  border-width:0;
+  color:gray;
+  background-color:gray
 }
-/* unvisited link */
+/* Styles for centering content vertically and horizontally */
+.center-content {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.5em;
+  display: flex;
+  min-height: 100vh;
+  padding: 20px; 
+  margin-top: 50px; 
+  margin-left: 50px;
+}
+
+/* Styles for navigation item */
+.nav-item {
+    display: inline-block;
+}
+
+/* Styles for buttons */
+.btn {
+  padding: 15px 20px; 
+  font-size: 16px;  
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Styles for unvisited links */
 a:link {
-  color: #27d0e6;
+  color: #6c2cab;
 }
 
+/* Styles for visited links */
 a:visited {
-  color: #27d0e6;
+  color: #6c2cab;
 }
 
+/* Styles for links on hover */
 a:hover {
-  color: #a6f5ff;
+  color: #81a1eb;
 }
 
+/* Styles for active links */
 a:active {
   color: #8cf2ff;
 }
+
+/* Styles for the top navigation bar */
 .topnav {
   background-color: #333;
   overflow: hidden;
+}
+
+/* Custom text styles */
+.custom-text {
+  color: #5b5ea6;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Header text styles */
+.header-text {
+  color: #34568B;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+/* Field text styles */
+.field-text {
+  color: #5b5ea6;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.non-pressable {
+  color: #406FDB;
+  pointer-events: none;
+  font-size: 4.5rem;
+}
+
+.logo-text {
+  cursor: default;
+  text-decoration: none;
+  color: #406FDB; /* Change to your preferred text color */
+  font-size: 4.5rem; /* Adjust the font size as needed */
 }

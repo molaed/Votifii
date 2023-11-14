@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg ">
+  <!-- The opening tag for a Bootstrap navbar with a responsive design. -->
+
+  <span class="navbar-brand non-pressable">
+    <!-- The brand/logo section of the navbar. -->
+    <span class="logo-text">Votifii</span>
+    <!-- Display the text "Votifii" as the logo text. -->
+  </span>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <!-- The collapsible section of the navbar. -->
+
+    <%= link_to "Home", root_path, class: "nav-link"%>
+    <!-- Display a link to the home page with the text "Home" using the link_to helper. -->
+
+    <span class="nav-item active">
+      <%= link_to "Elections", elections_path , class: "nav-link"%>
+      <!-- Display a link to the elections page with the text "Elections" using the link_to helper. -->
+    </span>
+
+    <span class="nav-item active">
+      <%= link_to "All Profiles", users_path , class: "nav-link"%>
+      <!-- Display a link to the profiles page with the text "Profiles" using the link_to helper. -->
+    </span>
+
+    <span class="nav-item">
+      <%= link_to "Hi, #{current_user.name}", user_path(current_user), class: "nav-link" %>
+      <!-- Display a personalized greeting and a link to edit the user's registration information using the link_to helper. -->
+    </span>
+
+    <span class="nav-item">
+      <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link"%>
+      <!-- Display a link to sign out with the text "Sign Out" using the link_to helper. -->
+    </span>
+    <hr>
+  </div>
+</nav>
+<!-- The closing tag for the Bootstrap navbar. -->

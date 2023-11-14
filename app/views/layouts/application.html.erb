@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Votifii</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html class="center-content">
+<!-- The document type declaration and opening HTML tag with a class "center-content" for styling purposes. -->
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<head>
+  <title>Votifii</title>
+  <!-- The head section contains metadata and links to external resources. -->
 
-    <%= javascript_importmap_tags %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Viewport meta tag for responsive design on different devices. -->
 
-  </head>
+  <%= csrf_meta_tags %>
+  <!-- Meta tags related to Cross-Site Request Forgery (CSRF) protection. -->
 
-  <body>
-    <%= yield %>
-  </body>
+  <%= csp_meta_tag %>
+  <!-- Content Security Policy (CSP) meta tag for specifying security policies for resources. -->
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <!-- Link tags for including stylesheets. "application" is the default stylesheet, and "data-turbo-track" is a TurboDrive attribute for automatic page reloading. -->
+
+  <%= javascript_importmap_tags %>
+  <!-- Tags for managing JavaScript import maps, which define the mapping between logical module names and file URLs. -->
+
+</head>
+
+<body>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <!-- Display flash messages for notices and alerts. -->
+
+  <% if user_signed_in? %>
+    <%= render partial: "shared/loggednavbar" %>
+  <% else %>
+    <%= render partial: "shared/unloggednavbar" %>
+  <% end %>
+  <!-- Conditionally render different navigation bars based on whether the user is signed in or not. -->
+
+  <%= yield %>
+  <!-- The yield tag is a placeholder where the content of the specific view will be inserted. -->
+
+  <%= @image %>
+  <!-- Display an image, the source of which is specified by the @image instance variable. -->
+
+</body>
+
 </html>

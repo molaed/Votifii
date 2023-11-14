@@ -1,26 +1,17 @@
-# README
+# Welcome to Votifii!
 
-To access the Deployed version of this project, access this website : https://rails-qt42.onrender.com/
+## Check out the project here, live on Render!: <a href="https://rails-qt42.onrender.com/">Votifii</a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What's this all about?
 
-Things you may want to cover:
+Votifii is an online voting platform. Authorized users are able to:
 
-* Ruby version
+- **Create** elections
+- **Add** candidates to the elections, where each candidate has:
+  - A **description** -- i.e. their current position, their interests, ...
+  - A **speech**, which can be heavily customized using markdown format!
+  - A **vote count**
+- Each election allows voters to **vote** for a candidate of their choosing
+- **End** the election by determining who has the most votes and declaring the winner!
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

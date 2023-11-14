@@ -1,0 +1,23 @@
+<body id="background">
+  <!-- Main content container with an id of "main" -->
+  <div id="main">
+
+    <!-- Displaying user information using embedded Ruby (ERB) -->
+    <h1><%= @user.name %></h1> <br>
+    <h1><%= @user.email %></h1> <br>
+    <h3>Candidate: <%= @user.candidate %></h3> <br>
+    <h3>Currently: <%= @user.currentPosition %></h3> <br>
+
+    <!-- Additional user details such as experience, education, accolades, and connections -->
+    <h2>Experience: <%= @user.experience %></h2>
+    <h2>Education: <%= @user.education %></h2>
+    <h2>Accolades: <%= @user.accolades %></h2>
+    <h2>Connections: <%= @user.connections %></h2>
+
+    <!-- Allow editing links only for signed-in users and the owner of the profile -->
+    <% if user_signed_in? && @user == current_user %><!--Prevent editing unless owner-->
+      <%= link_to 'Edit Profile', edit_user_path(@user) %></br>
+      <%= link_to 'Edit Account', edit_user_registration_path(@user) %>
+    <% end %>
+  </div>
+</body>

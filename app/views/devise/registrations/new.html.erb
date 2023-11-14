@@ -1,0 +1,35 @@
+<h2 class="header-text">Sign Up </h2> <!-- Display a heading with the class "header-text" indicating that the user is on the sign-up page. -->
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %> <!-- Generate a form for user sign-up. The form is configured to submit to the registration_path using the registration resource and method. -->
+
+  <%= render "devise/shared/error_messages", resource: resource %> <!-- Render shared error messages, if any, for the resource (user). -->
+
+  <div class="field">
+    <%#= f.label :User, class: "field-text" %><br>
+    <%#= f.text_field :name, autofocus: true, autocomplete: "user" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "field-text" %><br /> <!-- Display a label for the email input field with the class "field-text." -->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %> <!-- Display an email input field with autofocus enabled and autocomplete set to "email." -->
+  </div>
+
+  <div class="field">
+    <%= f.label :password, class: "field-text" %>
+    <% if @minimum_password_length %> <!-- Check if there is a minimum password length requirement. -->
+      <em class="custom-text">(<%= @minimum_password_length %> characters minimum)</em> <!-- Display an informative message about the minimum password length with the class "custom-text." -->
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %> <!-- Display a password input field with autocomplete set to "new-password." -->
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, class: "field-text"%><br /> <!-- Display a label for the password confirmation input field with the class "field-text." -->
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %> <!-- Display a password confirmation input field with autocomplete set to "new-password." -->
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %> <!-- Display a submit button labeled "Sign up" to trigger the form submission. -->
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %> <!-- Render shared links, likely related to authentication, such as sign-in or password recovery links. -->

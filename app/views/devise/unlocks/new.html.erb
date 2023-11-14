@@ -1,0 +1,17 @@
+<h2>Resend unlock instructions</h2> <!-- Display a heading indicating that the user is on the page to resend unlock instructions. -->
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %> <!-- Generate a form for resending unlock instructions for a specific resource (likely a user). The form is configured to submit a POST request to the unlock_path. -->
+
+  <%= render "devise/shared/error_messages", resource: resource %> <!-- Render shared error messages, if any, for the resource (user). -->
+
+  <div class="field">
+    <%= f.label :email %><br /> <!-- Display a label for the email input field. -->
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %> <!-- Display an email input field, with autofocus enabled and autocomplete set to "email." -->
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Resend unlock instructions" %> <!-- Display a submit button labeled "Resend unlock instructions" to trigger the form submission. -->
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %> <!-- Render shared links, likely related to authentication, such as sign-in or sign-up links. -->

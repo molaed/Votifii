@@ -1,14 +1,24 @@
-<p> Add Candidate </p>
+<hr>
+<h3 style="margin-bottom: 0;"> Add Candidate </h3>
 <%= form_with model: [ @election, @election.candidates.build ] do |form| %>
-  <p>
+    <div style="font-size: 15px">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
-  <p>
+    <%= form.text_field :name %><br>
     <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
-  <p>
+    <%= form.text_area :description %><br>
+    <%= form.label :speech %><br>
+    <%= form.text_area :speech%><br>
+    <%= form.label :"Image Link" %><br>
+    <%= form.text_field :image_link %><br>
+  </div>
     <%= form.submit %>
-  </p>
 <% end %>
+<hr>
+<style>
+  p {
+    font-size: 15px;
+    margin-top: 0;
+  }
+
+
+</style>

@@ -1,0 +1,53 @@
+<% if resource == current_user %> <!--Prevent from editing unless owner-->
+<h2>Edit <%= resource_name.to_s.humanize %></h2> <!-- Display a heading indicating that the user is on the account editing page. -->
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %> <!-- Generate a form for editing account information for a specific resource (likely a user). The form is configured to submit a PUT request to the registration_path. -->
+
+  <%= render "devise/shared/error_messages", resource: resource %> <!-- Render shared error messages, if any, for the resource (user). -->
+
+  <div class="field">
+    <%= f.label :email %><br /> <!-- Display a label for the email input field. -->
+
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %> <!-- Display an email input field, with autofocus enabled and autocomplete set to "email." -->
+
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %> <!-- Check if the account is confirmable and has a pending reconfirmation. -->
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div> <!-- Display a message indicating that the account is currently waiting for confirmation and show the unconfirmed email address. -->
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br /> <!-- Display a label for the password input field with an optional message. -->
+
+    <%= f.password_field :password, autocomplete: "new-password" %> <!-- Display a password input field with autocomplete set to "new-password." -->
+
+    <% if @minimum_password_length %> <!-- Check if there is a minimum password length requirement. -->
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em> <!-- Display a message indicating the minimum password length. -->
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br /> <!-- Display a label for the password confirmation input field. -->
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %> <!-- Display a password confirmation input field with autocomplete set to "new-password." -->
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br /> <!-- Display a label for the current password input field with an explanatory message. -->
+    <%= f.password_field :current_password, autocomplete: "current-password" %> <!-- Display a current password input field with autocomplete set to "current-password." -->
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %> <!-- Display a submit button labeled "Update" to trigger the form submission. -->
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div> <!-- Display a section for canceling the user's account, including a button to confirm the cancellation. The confirmation is handled with the `data-confirm` attribute, which is a standard Rails confirmation dialog. The cancellation triggers a DELETE request to the registration_path. -->
+
+<%= link_to "Back", :back %> <!-- Display a link to go back to the previous page. -->
+
+<%else%>
+  <h3>No permission to edit: <%= @resource.email %> </h3>
+<%end%>

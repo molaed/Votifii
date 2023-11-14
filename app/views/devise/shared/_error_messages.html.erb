@@ -1,0 +1,15 @@
+<% if resource.errors.any? %> <!-- Check if the resource (likely a model instance) has any validation errors. -->
+  <div id="error_explanation" data-turbo-cache="false"> <!-- Display a div with the ID "error_explanation" and disable TurboDrive caching for this section. This is commonly used to prevent caching of error messages when using TurboDrive (part of Hotwire). -->
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase)
+       %>
+    </h2> <!-- Display a heading with a translated error message. The message typically indicates that there were errors preventing the resource from being saved. The translation key used is "errors.messages.not_saved," and dynamic information such as the error count and the humanized resource name are provided. -->
+    <ul>
+      <% resource.errors.full_messages.each do |message| %> <!-- Iterate over each full error message associated with the resource. -->
+        <li><%= message %></li> <!-- Display each error message as a list item within an unordered list. -->
+      <% end %>
+    </ul>
+  </div>
+<% end %> <!-- End the conditional block. If there are no errors on the resource, this section will not be rendered. -->

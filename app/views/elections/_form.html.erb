@@ -1,22 +1,25 @@
+<%= form_with model: election do |form| %> <!-- Generate a form using the form_with helper. The form is associated with the 'election' model, which is likely an instance of the Election model in a Ruby on Rails application. -->
 
-      <%= form_with model: election do |form| %>
-        <div>
-          <%= form.label :title %><br>
-          <%= form.text_field :title %>
-          <% election.errors.full_messages_for(:title).each do |message| %>
-            <div><%= message %></div>
-          <% end %>
-        </div>
+  <div>
+    <%= form.label :title %><br> <!-- Display a label for the 'title' attribute of the 'election' model. -->
+    <%= form.text_field :title %> <!-- Display a text field for the 'title' attribute, allowing users to input the title for the election. -->
 
-        <div>
-          <%= form.label :description %><br>
-          <%= form.text_area :description %><br>
-          <% election.errors.full_messages_for(:description).each do |message| %>
-            <div><%= message %></div>
-          <% end %>
-        </div>
+    <% election.errors.full_messages_for(:title).each do |message| %> <!-- Iterate over each error message associated with the 'title' attribute of the 'election' model. -->
+      <div><%= message %></div> <!-- Display each error message in a div element. This is typically used to show validation errors if there are any issues with the title attribute. -->
+    <% end %>
+  </div>
 
-        <div>
-          <%= form.submit %>
-        </div>
-      <% end %>
+  <div>
+    <%= form.label :description %><br> <!-- Display a label for the 'description' attribute of the 'election' model. -->
+    <%= form.text_area :description %><br> <!-- Display a text area for the 'description' attribute, allowing users to input a description for the election. -->
+
+    <% election.errors.full_messages_for(:description).each do |message| %> <!-- Iterate over each error message associated with the 'description' attribute of the 'election' model. -->
+      <div><%= message %></div> <!-- Display each error message in a div element. This is typically used to show validation errors if there are any issues with the description attribute. -->
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %> <!-- Display a submit button to submit the form. The button text will typically be the default "Submit" unless explicitly customized. -->
+  </div>
+
+<% end %> <!-- End the form_with block. -->
