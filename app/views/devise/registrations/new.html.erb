@@ -5,7 +5,12 @@
   <%= render "devise/shared/error_messages", resource: resource %> <!-- Render shared error messages, if any, for the resource (user). -->
 
   <div class="field">
-    <%= f.label :Email, class: "field-text" %><br /> <!-- Display a label for the email input field with the class "field-text." -->
+    <%#= f.label :User, class: "field-text" %><br>
+    <%#= f.text_field :name, autofocus: true, autocomplete: "user" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, class: "field-text" %><br /> <!-- Display a label for the email input field with the class "field-text." -->
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %> <!-- Display an email input field with autofocus enabled and autocomplete set to "email." -->
   </div>
 
