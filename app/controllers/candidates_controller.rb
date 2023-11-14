@@ -7,7 +7,14 @@ class CandidatesController < ApplicationController
 
         if @election.user == current_user #Make sure they have permission
             #@election.update_attribute(:candidateCount, @election.candidateCount + 1)
+
             @candidate = @election.candidates.create(candidate_params)
+            #If Image Link was empty, give a default one
+            if @candidate.image_link.length() == 0
+                @candidate.image_link = render_pic
+                @candidate.save
+            end
+
             redirect_back(fallback_location: root_path)
         end
     end

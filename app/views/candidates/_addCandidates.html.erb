@@ -8,10 +8,9 @@
     <%= form.text_area :description %><br>
     <%= form.label :speech %><br>
     <%= form.text_area :speech%><br>
+    <%= form.label :"Image Link" %><br>
+    <%= form.text_field :image_link %><br>
   </div>
-    <div style = "display:none;">
-      <%= form.text_field :image_link, :value =>  render_pic %>
-    </div>
     <%= form.submit %>
 <% end %>
 <hr>
