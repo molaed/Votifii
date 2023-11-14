@@ -5,4 +5,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  after_initialize :default_values
+
+private
+  def default_values
+    self.name = "User"
+  end
 end
