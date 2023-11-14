@@ -53,9 +53,9 @@
   <% @election.candidates.order(:name).each do |candidate| %>
     <p>
 
-      <%= image_tag candidate.image_link, style: 'max-width: 50px; max-height: 50px;' %> 
-      <%= candidate.name %> <br> 
-
+      
+      <strong> <%= candidate.name %> </strong> <br> 
+      <%= image_tag candidate.image_link, style: 'max-width: 150px; max-height: 150px;' %> <br>
       <strong> Description: </strong>
       <%= candidate.description%> <br>
 
