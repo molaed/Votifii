@@ -20,11 +20,9 @@
   <div>
     <% @election.candidates.order(:name).each do |candidate| %>
       <div class="DisplayCandidate" style="display: none; font-size: 15px">
-          <strong> Candidate: </strong>
-          <%= candidate.name %> <br>
 
-          <%= image_tag candidate.image_link, style: 'max-width: 200px; max-height: 200px;' %>
-          <br/>
+          <%= image_tag candidate.image_link, style: 'max-width: 50px; max-height: 50px;' %>
+          <%= candidate.name %> <br>
 
           <strong> Description: </strong>
           <%= candidate.description%> <br>

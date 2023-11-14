@@ -52,10 +52,9 @@
   <hr>
   <% @election.candidates.order(:name).each do |candidate| %>
     <p>
-      <strong> Candidate: </strong>
-      <%= candidate.name %> <br>
-      
-      <%= image_tag candidate.image_link, style: 'max-width: 200px; max-height: 200px;' %> <br>
+
+      <%= image_tag candidate.image_link, style: 'max-width: 50px; max-height: 50px;' %> 
+      <%= candidate.name %> <br> 
 
       <strong> Description: </strong>
       <%= candidate.description%> <br>
@@ -66,7 +65,7 @@
       <strong> Speech: </strong>
       <%= simple_format(candidate.speech) %> <br>
 
-      
+  
 
     <% candidate.comments.each do |comment| %>
       <li>
